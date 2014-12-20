@@ -1,0 +1,32 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Text_Button" parent="TextAppearance.AppCompat.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:typeface">normal</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text_EnterField" parent="TextAppearance.AppCompat.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:typeface">normal</item>
+        <item name="android:textColor">#6E6666</item>
+    </style>
+
+    <style name="Text_DialogField" parent="TextAppearance.AppCompat">
+       <item name="android:layout_width">match_parent</item>
+       <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginLeft">4dp</item>
+        <item name="android:layout_marginRight">4dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+    </style>
+
+</resources>
