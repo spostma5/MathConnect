@@ -4,25 +4,18 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.app.LoaderManager.LoaderCallbacks;
-import android.content.ContentResolver;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
@@ -52,6 +45,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
      * Keep track of the login task to ensure we can cancel it if requested.
      */
     private UserLoginTask mAuthTask = null;
+    public final static String EMAIL = "EMAIL";
 
     // UI references.
     private AutoCompleteTextView mEmailView;
@@ -155,7 +149,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     }
 
     private boolean isPasswordValid(String password) {
-        return password.length() > 6;
+        return password.length() >= 6;
     }
 
     /**
@@ -178,7 +172,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                 }
             });
 
-            /*
+
             mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
             mProgressView.animate().setDuration(shortAnimTime).alpha(
                   show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
@@ -187,8 +181,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                     mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
                 }
             });
-
-*/        } else {
+        } else {
             // The ViewPropertyAnimator APIs are not available, so simply show
             // and hide the relevant UI components.
             mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
@@ -283,7 +276,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                 }
             }
 
-            registerUser(mEmail);
+            //registerUser();
 
             return true;
         }
@@ -294,8 +287,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             showProgress(false);
 
             if (success) {
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
-                mPasswordView.requestFocus();
+                registerUser();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
@@ -307,13 +299,12 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             mAuthTask = null;
             showProgress(false);
         }
+    }
 
-        protected void registerUser(String email) {
-            Dialog registerDialog = new Dialog(mLoginFormView.getContext());
-            registerDialog.setContentView(R.layout.dialog_register);
-
-            registerDialog.show();
-        }
+    protected void registerUser() {
+        Intent intent = new Intent(this,RegisterDialog.class);
+        intent.putExtra(EMAIL,mEmailView.getText().toString());
+        startActivity(intent);
     }
 }
 

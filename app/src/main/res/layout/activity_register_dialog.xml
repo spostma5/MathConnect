@@ -1,0 +1,81 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".RegisterDialog">
+
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout android:id="@+id/email_login_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/mainlogonegative"
+                android:layout_gravity="center"
+                android:id="@+id/imageView2"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="40dp"/>
+
+            <AutoCompleteTextView
+                android:id="@+id/email"
+                style="@style/Text_EnterFieldDialog"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:singleLine="true" />
+            <EditText
+                android:inputType="textPassword"
+                style="@style/Text_EnterFieldDialog"
+                android:hint="Password"
+                android:id="@+id/password"
+                android:maxLines="1"
+                android:layout_below="@+id/editText"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <EditText
+                android:inputType="textPassword"
+                style="@style/Text_EnterFieldDialog"
+                android:hint="Confirm Password"
+                android:id="@+id/passwordConfirm"
+                android:maxLines="1"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/password" />
+
+            <Button
+                style="@style/Text_Button"
+                android:text="Register"
+                android:id="@+id/registerButton"
+                android:onClick="registerClick"
+                android:maxLines="1"
+                android:layout_alignTop="@+id/cancelButton"
+                android:layout_alignRight="@+id/passwordConfirm"
+                android:layout_alignEnd="@+id/passwordConfirm"
+                android:layout_marginTop="50dp"/>
+
+            <Button
+                style="@style/Text_Button"
+                android:text="Cancel"
+                android:id="@+id/cancelButton"
+                android:onClick="cancelClick"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="15dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
