@@ -285,9 +285,15 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         protected void onPostExecute(final Boolean success) {
             mAuthTask = null;
             showProgress(false);
+            String password = mPasswordView.getText().toString();
 
             if (success) {
-                registerUser();
+                if(TextUtils.isEmpty(password)) {
+                    registerUser();
+                }
+                else {
+                    gotoHome();
+                }
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
@@ -304,6 +310,11 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     protected void registerUser() {
         Intent intent = new Intent(this,RegisterDialog.class);
         intent.putExtra(EMAIL,mEmailView.getText().toString());
+        startActivity(intent);
+    }
+
+    protected void gotoHome() {
+        Intent intent = new Intent(this,HomePage.class);
         startActivity(intent);
     }
 }
