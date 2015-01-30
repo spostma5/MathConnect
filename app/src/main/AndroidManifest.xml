@@ -24,7 +24,6 @@
         </activity>
         <activity
             android:name=".RegisterDialog"
-            android:label="@string/title_activity_register_dialog"
             android:theme="@style/DialogTheme" >
         </activity>
         <activity
@@ -36,12 +35,22 @@
             android:label="@string/title_activity_settings" >
         </activity>
         <activity
-            android:name=".SettingActivity"
-            android:label="@string/title_activity_setting" >
-        </activity>
-        <activity
             android:name=".ProfileActivity"
             android:label="@string/title_activity_profile" >
+        </activity>
+        <activity
+            android:name=".ConnectActivity"
+            android:label="@string/title_activity_connect" >
+        </activity>
+        <activity
+            android:name=".ChangePassword"
+            android:label="@string/title_activity_change_password"
+            android:theme="@style/DialogTheme" >
+        </activity>
+        <activity
+            android:name=".ChangePicture"
+            android:label="@string/title_activity_change_picture"
+            android:theme="@style/DialogTheme">
         </activity>
     </application>
 

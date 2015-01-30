@@ -31,6 +31,7 @@
     <Button
         style="@style/Text_Button"
         android:text="Connect"
+        android:onClick="gotoConnect"
         android:id="@+id/connect_Button"
         android:layout_above="@+id/saved_Button"
         android:layout_alignRight="@+id/saved_Button"

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class ProfileActivity extends ActionBarActivity {
@@ -22,6 +23,16 @@ public class ProfileActivity extends ActionBarActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_profile, menu);
         return true;
+    }
+
+    public void gotoChangePass(View view) {
+        Intent intent = new Intent(this,ChangePassword.class);
+        startActivity(intent);
+    }
+
+    public void gotoChangePic(View view) {
+        Intent intent = new Intent(this,ChangePicture.class);
+        startActivity(intent);
     }
 
     @Override

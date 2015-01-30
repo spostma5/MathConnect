@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         style="@style/Text_Button"
         android:text="Change Password"
+        android:onClick="gotoChangePass"
         android:id="@+id/change_password_button"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
@@ -38,6 +39,7 @@
         android:layout_height="wrap_content"
         style="@style/Text_Button"
         android:text="Change Profile Picture"
+        android:onClick="gotoChangePic"
         android:id="@+id/change_photo_button"
         android:layout_above="@+id/change_password_button"
         android:layout_alignParentLeft="true"
@@ -52,7 +54,7 @@
         android:layout_above="@+id/editText">
 
         <ImageView
-            android:src="@drawable/user_blank"
+            android:src="@drawable/userblank"
             android:layout_width="match_parent"
             android:layout_height="306dp"
             android:id="@+id/imageView4"

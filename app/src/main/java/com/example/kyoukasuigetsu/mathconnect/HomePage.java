@@ -45,6 +45,11 @@ public class HomePage extends ActionBarActivity {
         startActivity(intent);
     }
 
+    public void gotoConnect(View view) {
+        Intent intent = new Intent(this,ConnectActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
