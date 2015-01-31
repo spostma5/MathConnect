@@ -74,14 +74,30 @@ public class ChangePicture extends ActionBarActivity {
             try
             {
                 //Let's read the picked image -its URI
-                Uri pickedImage = data.getData();
+                final Uri pickedImage = data.getData();
 
 
                 //Let's read the image path using content resolver
                 ImageStream = getContentResolver().openInputStream(pickedImage);
 
                 //Now let's set the GUI ImageView data with data read from the picked file
-                Bitmap selectedImage = BitmapFactory.decodeStream(ImageStream);
+                final Bitmap selectedImage = BitmapFactory.decodeStream(ImageStream);
+                image.setImageBitmap(selectedImage);
+
+                button.setText("Confirm");
+                button.setOnClickListener(new View.OnClickListener()
+                {
+
+                    @Override
+                    public void onClick(View arg0)
+                    {
+                        Intent returnIntent = new Intent();
+                        returnIntent.putExtra("PROFILE_PICTURE",pickedImage);
+                        setResult(RESULT_OK,returnIntent);
+                        finish();
+
+                    }
+                });
             }
 
             catch(FileNotFoundException e)

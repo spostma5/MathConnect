@@ -1,20 +1,35 @@
 package com.example.kyoukasuigetsu.mathconnect;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 
 
 public class ProfileActivity extends ActionBarActivity {
+
+    private Bitmap userPic;
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        imageView = (ImageView) findViewById(R.id.picView);
+        if (userPic != null)
+            imageView.setImageBitmap(userPic);
     }
 
 
@@ -26,20 +41,20 @@ public class ProfileActivity extends ActionBarActivity {
     }
 
     public void gotoChangePass(View view) {
-        Intent intent = new Intent(this,ChangePassword.class);
-        startActivity(intent);
+        Intent intent = new Intent(this, ChangePassword.class);
+        startActivityForResult(intent, 1);
     }
 
     public void gotoChangePic(View view) {
-        Intent intent = new Intent(this,ChangePicture.class);
+        Intent intent = new Intent(this, ChangePicture.class);
         startActivity(intent);
     }
 
     @Override
     public boolean onKeyDown(int keycode, KeyEvent e) {
-        switch(keycode) {
+        switch (keycode) {
             case KeyEvent.KEYCODE_MENU:
-                Intent intent = new Intent(this,SettingsActivity.class);
+                Intent intent = new Intent(this, SettingsActivity.class);
                 startActivity(intent);
                 return true;
         }
@@ -60,5 +75,38 @@ public class ProfileActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                InputStream ImageStream = null;
+
+                String uriStr = data.getStringExtra(data.getStringExtra("PROFILE_PICTURE"));
+                Uri pickedImage = Uri.parse(uriStr);
+                try {
+                    ImageStream = getContentResolver().openInputStream(pickedImage);
+                } catch (FileNotFoundException e) {
+                    //Error
+                }
+
+                userPic = BitmapFactory.decodeStream(ImageStream);
+                imageView.setImageBitmap(userPic);
+                imageView.invalidate();
+
+                if (ImageStream != null) {
+                    try {
+                        ImageStream.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            if (resultCode == RESULT_CANCELED) {
+                //Write your code if there's no result
+            }
+        }
+
     }
 }

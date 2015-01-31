@@ -54,7 +54,6 @@
         android:layout_above="@+id/editText">
 
         <ImageView
-            android:src="@drawable/userblank"
             android:layout_width="match_parent"
             android:layout_height="306dp"
             android:id="@+id/imageView4"
