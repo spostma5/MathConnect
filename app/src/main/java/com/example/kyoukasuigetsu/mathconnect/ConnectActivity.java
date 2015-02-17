@@ -6,8 +6,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.GridLayout;
 import android.widget.ImageButton;
 
 
@@ -17,6 +19,11 @@ public class ConnectActivity extends ActionBarActivity {
     private ImageButton shapeButton;
     private ImageButton mathButton;
     private ImageButton settingsButton;
+
+    private GridLayout gridLayout;
+    private GridLayout gridLayout2;
+    private GridLayout gridLayout3;
+    private GridLayout gridLayout4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +36,16 @@ public class ConnectActivity extends ActionBarActivity {
         shapeButton = (ImageButton)findViewById(R.id.shapeButton);
         mathButton = (ImageButton)findViewById(R.id.mathButton);
         settingsButton = (ImageButton)findViewById(R.id.settingsButton);
+
+        gridLayout = (GridLayout)findViewById(R.id.connectGridLayout);
+        gridLayout2 = (GridLayout)findViewById(R.id.connectGridLayout2);
+        gridLayout3 = (GridLayout)findViewById(R.id.connectGridLayout3);
+        gridLayout4 = (GridLayout)findViewById(R.id.connectGridLayout4);
+
+        gridLayout.setVisibility(View.INVISIBLE);
+        gridLayout2.setVisibility(View.INVISIBLE);
+        gridLayout3.setVisibility(View.INVISIBLE);
+        gridLayout4.setVisibility(View.INVISIBLE);
 
        setButtonSizes();
     }
@@ -70,5 +87,49 @@ public class ConnectActivity extends ActionBarActivity {
         shapeButton.setLayoutParams(lp);
         mathButton.setLayoutParams(lp);
         settingsButton.setLayoutParams(lp);
+    }
+
+    public void onDrawButton(View view) {
+        gridLayout2.setVisibility(View.INVISIBLE);
+        gridLayout3.setVisibility(View.INVISIBLE);
+        gridLayout4.setVisibility(View.INVISIBLE);
+
+        if(gridLayout.getVisibility() == View.VISIBLE)
+            gridLayout.setVisibility(View.INVISIBLE);
+        else
+            gridLayout.setVisibility(View.VISIBLE);
+    }
+
+    public void onShapeButton(View view) {
+        gridLayout.setVisibility(View.INVISIBLE);
+        gridLayout3.setVisibility(View.INVISIBLE);
+        gridLayout4.setVisibility(View.INVISIBLE);
+
+        if(gridLayout2.getVisibility() == View.VISIBLE)
+            gridLayout2.setVisibility(View.INVISIBLE);
+        else
+            gridLayout2.setVisibility(View.VISIBLE);
+    }
+
+    public void onMathButton(View view) {
+        gridLayout.setVisibility(View.INVISIBLE);
+        gridLayout2.setVisibility(View.INVISIBLE);
+        gridLayout4.setVisibility(View.INVISIBLE);
+
+        if(gridLayout3.getVisibility() == View.VISIBLE)
+            gridLayout3.setVisibility(View.INVISIBLE);
+        else
+            gridLayout3.setVisibility(View.VISIBLE);
+    }
+
+    public void onSettingsButton(View view) {
+        gridLayout.setVisibility(View.INVISIBLE);
+        gridLayout2.setVisibility(View.INVISIBLE);
+        gridLayout3.setVisibility(View.INVISIBLE);
+
+        if(gridLayout4.getVisibility() == View.VISIBLE)
+            gridLayout4.setVisibility(View.INVISIBLE);
+        else
+            gridLayout4.setVisibility(View.VISIBLE);
     }
 }
