@@ -1,17 +1,36 @@
 package com.example.kyoukasuigetsu.mathconnect;
 
-import android.support.v7.app.ActionBarActivity;
+import android.graphics.Point;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.ImageButton;
 
 
 public class ConnectActivity extends ActionBarActivity {
 
+    private ImageButton drawButton;
+    private ImageButton shapeButton;
+    private ImageButton mathButton;
+    private ImageButton settingsButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_connect);
+
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        this.setContentView(R.layout.activity_connect);
+
+        drawButton = (ImageButton)findViewById(R.id.drawButton);
+        shapeButton = (ImageButton)findViewById(R.id.shapeButton);
+        mathButton = (ImageButton)findViewById(R.id.mathButton);
+        settingsButton = (ImageButton)findViewById(R.id.settingsButton);
+
+       setButtonSizes();
     }
 
 
@@ -35,5 +54,21 @@ public class ConnectActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void setButtonSizes() {
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+
+        ViewGroup.LayoutParams lp;
+        lp = drawButton.getLayoutParams();
+        lp.width = size.x/4;
+        lp.height = size.x/4;
+
+        drawButton.setLayoutParams(lp);
+        shapeButton.setLayoutParams(lp);
+        mathButton.setLayoutParams(lp);
+        settingsButton.setLayoutParams(lp);
     }
 }
