@@ -41,7 +41,7 @@
         <activity
             android:name=".ConnectActivity"
             android:label="@string/title_activity_connect"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         </activity>
         <activity
             android:name=".ChangePassword"
@@ -51,7 +51,11 @@
         <activity
             android:name=".ChangePicture"
             android:label="@string/title_activity_change_picture"
-            android:theme="@style/DialogTheme">
+            android:theme="@style/DialogTheme" >
+        </activity>
+        <activity
+            android:name=".GestureProgram"
+            android:label="@string/title_activity_gesture_program" >
         </activity>
     </application>
 

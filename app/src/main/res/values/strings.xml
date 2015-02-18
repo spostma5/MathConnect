@@ -11,5 +11,6 @@
     <string name="title_activity_connect">ConnectActivity</string>
     <string name="title_activity_change_password">ChangePassword</string>
     <string name="title_activity_change_picture">ChangePicture</string>
+    <string name="title_activity_gesture_program">GestureProgram</string>
 
 </resources>

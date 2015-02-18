@@ -35,6 +35,7 @@ public class ConnectActivity extends ActionBarActivity {
 
     private int colour;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +58,7 @@ public class ConnectActivity extends ActionBarActivity {
         gridLayout3.setVisibility(View.INVISIBLE);
         gridLayout4.setVisibility(View.INVISIBLE);
 
+
         gestureOverlayView = (GestureOverlayView)findViewById(R.id.gestureOverlayView);
 
         colour = Color.BLACK;
@@ -74,7 +76,7 @@ public class ConnectActivity extends ActionBarActivity {
 
         setGestureOn();
 
-       setButtonSizes();
+        setButtonSizes();
     }
 
 
@@ -179,13 +181,12 @@ public class ConnectActivity extends ActionBarActivity {
     public void setGestureOn() {
         gestureOverlayView.setEnabled(true);
         gestureOverlayView.setGestureVisible(true);
-        gestureOverlayView.setUncertainGestureColor(colour);
     }
 
     public void toggleColour(View view) {
         Button selButton = (Button)view;
         if(selButton.getId() == R.id.toggleButton) {
-            colour = colourToggles[0].getDrawingCacheBackgroundColor();
+            colour = colourToggles[0].getSolidColor();
             gestureOverlayView.setGestureColor(colour);
             for(int i = 1; i < 9; i++) {
                 colourToggles[i].setChecked(false);
