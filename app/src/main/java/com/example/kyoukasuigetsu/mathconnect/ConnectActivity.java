@@ -1,5 +1,7 @@
 package com.example.kyoukasuigetsu.mathconnect;
 
+import android.gesture.GestureOverlayView;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -9,8 +11,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.ToggleButton;
 
 
 public class ConnectActivity extends ActionBarActivity {
@@ -24,6 +28,12 @@ public class ConnectActivity extends ActionBarActivity {
     private GridLayout gridLayout2;
     private GridLayout gridLayout3;
     private GridLayout gridLayout4;
+
+    private GestureOverlayView gestureOverlayView;
+
+    private ToggleButton[] colourToggles;
+
+    private int colour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +56,23 @@ public class ConnectActivity extends ActionBarActivity {
         gridLayout2.setVisibility(View.INVISIBLE);
         gridLayout3.setVisibility(View.INVISIBLE);
         gridLayout4.setVisibility(View.INVISIBLE);
+
+        gestureOverlayView = (GestureOverlayView)findViewById(R.id.gestureOverlayView);
+
+        colour = Color.BLACK;
+
+        colourToggles = new ToggleButton[9];
+        colourToggles[0] = (ToggleButton)findViewById(R.id.toggleButton);
+        colourToggles[1] = (ToggleButton)findViewById(R.id.toggleButton2);
+        colourToggles[2] = (ToggleButton)findViewById(R.id.toggleButton3);
+        colourToggles[3] = (ToggleButton)findViewById(R.id.toggleButton4);
+        colourToggles[4] = (ToggleButton)findViewById(R.id.toggleButton5);
+        colourToggles[5] = (ToggleButton)findViewById(R.id.toggleButton6);
+        colourToggles[6] = (ToggleButton)findViewById(R.id.toggleButton7);
+        colourToggles[7] = (ToggleButton)findViewById(R.id.toggleButton8);
+        colourToggles[8] = (ToggleButton)findViewById(R.id.toggleButton9);
+
+        setGestureOn();
 
        setButtonSizes();
     }
@@ -94,8 +121,12 @@ public class ConnectActivity extends ActionBarActivity {
         gridLayout3.setVisibility(View.INVISIBLE);
         gridLayout4.setVisibility(View.INVISIBLE);
 
-        if(gridLayout.getVisibility() == View.VISIBLE)
+        gestureOverlayView.setEnabled(false);
+
+        if(gridLayout.getVisibility() == View.VISIBLE) {
             gridLayout.setVisibility(View.INVISIBLE);
+           setGestureOn();
+        }
         else
             gridLayout.setVisibility(View.VISIBLE);
     }
@@ -105,8 +136,12 @@ public class ConnectActivity extends ActionBarActivity {
         gridLayout3.setVisibility(View.INVISIBLE);
         gridLayout4.setVisibility(View.INVISIBLE);
 
-        if(gridLayout2.getVisibility() == View.VISIBLE)
+        gestureOverlayView.setEnabled(false);
+
+        if(gridLayout2.getVisibility() == View.VISIBLE) {
             gridLayout2.setVisibility(View.INVISIBLE);
+            setGestureOn();
+        }
         else
             gridLayout2.setVisibility(View.VISIBLE);
     }
@@ -116,8 +151,12 @@ public class ConnectActivity extends ActionBarActivity {
         gridLayout2.setVisibility(View.INVISIBLE);
         gridLayout4.setVisibility(View.INVISIBLE);
 
-        if(gridLayout3.getVisibility() == View.VISIBLE)
+        gestureOverlayView.setEnabled(false);
+
+        if(gridLayout3.getVisibility() == View.VISIBLE) {
             gridLayout3.setVisibility(View.INVISIBLE);
+            setGestureOn();
+        }
         else
             gridLayout3.setVisibility(View.VISIBLE);
     }
@@ -127,9 +166,30 @@ public class ConnectActivity extends ActionBarActivity {
         gridLayout2.setVisibility(View.INVISIBLE);
         gridLayout3.setVisibility(View.INVISIBLE);
 
-        if(gridLayout4.getVisibility() == View.VISIBLE)
+        gestureOverlayView.setEnabled(false);
+
+        if(gridLayout4.getVisibility() == View.VISIBLE) {
             gridLayout4.setVisibility(View.INVISIBLE);
+            setGestureOn();
+        }
         else
             gridLayout4.setVisibility(View.VISIBLE);
+    }
+
+    public void setGestureOn() {
+        gestureOverlayView.setEnabled(true);
+        gestureOverlayView.setGestureVisible(true);
+        gestureOverlayView.setUncertainGestureColor(colour);
+    }
+
+    public void toggleColour(View view) {
+        Button selButton = (Button)view;
+        if(selButton.getId() == R.id.toggleButton) {
+            colour = colourToggles[0].getDrawingCacheBackgroundColor();
+            gestureOverlayView.setGestureColor(colour);
+            for(int i = 1; i < 9; i++) {
+                colourToggles[i].setChecked(false);
+            }
+        }
     }
 }
