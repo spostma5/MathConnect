@@ -67,14 +67,17 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Button"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="15dp"
+            android:text="   Thin   "
             android:id="@+id/button4" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/button4"
-            android:text="New Button2"
+            android:text="Medium"
+            android:layout_marginLeft="15dp"
             style="?android:attr/buttonStyleSmall"
             android:id="@+id/button5" />
 
@@ -82,7 +85,8 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Button"
+            android:text="  Thick  "
+            android:layout_marginLeft="15dp"
             android:id="@+id/button6"
             android:layout_below="@id/button5" />
 
@@ -91,8 +95,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="New Button"
-            android:id="@+id/button7" />
+            android:id="@+id/button7"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="15dp"
+            android:onClick="toggleColour"
+            android:background="#ffa91100"
+            android:padding="5dp"
+            android:nestedScrollingEnabled="true" />
 
         <Button
             style="?android:attr/buttonStyleSmall"
@@ -100,17 +109,113 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_below="@id/button7"
-            android:text="New Button"
-            android:id="@+id/button8" />
+            android:id="@+id/button8"
+            android:layout_marginRight="15dp"
+            android:onClick="toggleColour"
+            android:background="#ff0b0094"
+            android:padding="5dp" />
 
         <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:layout_below="@id/button8"
-            android:text="New Button"
-            android:id="@+id/button9" />
+            android:id="@+id/button9"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="false"
+            android:layout_marginRight="15dp"
+            android:onClick="toggleColour"
+            android:background="#ff009a25"
+            android:padding="5dp" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button8"
+            android:layout_toLeftOf="@id/button7"
+            android:id="@+id/button10"
+            android:layout_alignParentBottom="false"
+            android:onClick="toggleColour"
+            android:background="#ffffffff"
+            android:padding="5dp"
+            android:singleLine="false" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button7"
+            android:layout_toLeftOf="@id/button7"
+            android:onClick="toggleColour"
+            android:id="@+id/button11"
+            android:background="#ff730b99"
+            android:padding="5dp" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/button7"
+            android:layout_marginTop="25dp"
+            android:onClick="toggleColour"
+            android:id="@+id/button12"
+            android:background="#ffb76c00"
+            android:padding="5dp" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button8"
+            android:layout_toLeftOf="@id/button10"
+            android:onClick="toggleColour"
+            android:id="@+id/button13"
+            android:layout_alignParentBottom="false"
+            android:background="#ff000000"
+            android:padding="5dp" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button7"
+            android:layout_toLeftOf="@id/button10"
+            android:onClick="toggleColour"
+            android:id="@+id/button14"
+            android:background="#ff1f94a0"
+            android:padding="5dp" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="toggleColour"
+            android:layout_toLeftOf="@id/button10"
+            android:layout_marginTop="25dp"
+            android:id="@+id/button15"
+            android:background="#ffc0c751"
+            android:padding="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Tooltip Size"
+            android:id="@+id/textView3"
+            android:textColor="#ffffff"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Tooltip Colour"
+            android:id="@+id/textView4"
+            android:textColor="#ffffff"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
     </RelativeLayout>
     <GridLayout
         android:layout_width="fill_parent"
@@ -167,6 +272,9 @@
         android:layout_height="match_parent"
         android:id="@+id/gestureOverlayView"
         android:layout_below="@+id/tableRow"
+        android:gestureStrokeType="multiple"
+        android:gestureColor="#000000"
+        android:fadeOffset="500000000"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"></android.gesture.GestureOverlayView>
 

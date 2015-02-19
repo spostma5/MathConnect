@@ -1,8 +1,13 @@
 package com.example.kyoukasuigetsu.mathconnect;
 
+import android.gesture.Gesture;
 import android.gesture.GestureOverlayView;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Point;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Display;
@@ -11,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
@@ -29,6 +35,8 @@ public class ConnectActivity extends ActionBarActivity {
     private GridLayout gridLayout4;
 
     private GestureOverlayView gestureOverlayView;
+
+    private Paint paint;
 
     private int colour;
 
@@ -57,14 +65,50 @@ public class ConnectActivity extends ActionBarActivity {
 
 
         gestureOverlayView = (GestureOverlayView)findViewById(R.id.gestureOverlayView);
+        gestureOverlayView.setFadeEnabled(false);
+        gestureOverlayView.setDrawingCacheEnabled(true);
+
+        gestureOverlayView.addOnGesturePerformedListener(new GestureOverlayView.OnGesturePerformedListener() {
+            @Override
+            public void onGesturePerformed(GestureOverlayView overlay, Gesture gesture) {
+                gestureOverlayView.setGestureColor(colour);
+                gestureOverlayView.setUncertainGestureColor(colour);
+
+
+                Bitmap bm = Bitmap.createBitmap(gestureOverlayView.getDrawingCache());
+                Canvas canvas = new Canvas();
+                canvas.drawBitmap(bm,0,0,paint);
+                gestureOverlayView.draw(canvas);
+
+                gestureOverlayView.clearAnimation();
+            }
+        });
+
+        gestureOverlayView.addOnGesturingListener(new GestureOverlayView.OnGesturingListener() {
+            @Override
+            public void onGesturingStarted(GestureOverlayView overlay) {
+                gestureOverlayView.setGestureColor(colour);
+                gestureOverlayView.setUncertainGestureColor(colour);
+            }
+
+            @Override
+            public void onGesturingEnded(GestureOverlayView overlay) {
+                gestureOverlayView.setGestureColor(colour);
+                gestureOverlayView.setUncertainGestureColor(colour);
+            }
+        });
 
         colour = Color.BLACK;
+
+        paint = new Paint();
+        paint.setColor(colour);
+        paint.setStrokeWidth(new Float(.6));
+        paint.setStyle(Paint.Style.FILL);
 
         setGestureOn();
 
         setButtonSizes();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -167,9 +211,12 @@ public class ConnectActivity extends ActionBarActivity {
     public void setGestureOn() {
         gestureOverlayView.setEnabled(true);
         gestureOverlayView.setGestureVisible(true);
+        gestureOverlayView.setGestureColor(colour);
     }
 
     public void toggleColour(View view) {
-
+        Button button = (Button)view;
+        ColorDrawable mdraw = (ColorDrawable)button.getBackground();
+        colour = mdraw.getColor();
     }
 }
