@@ -11,10 +11,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
-import android.widget.ToggleButton;
+import android.widget.RelativeLayout;
 
 
 public class ConnectActivity extends ActionBarActivity {
@@ -24,14 +23,12 @@ public class ConnectActivity extends ActionBarActivity {
     private ImageButton mathButton;
     private ImageButton settingsButton;
 
-    private GridLayout gridLayout;
+    private RelativeLayout gridLayout;
     private GridLayout gridLayout2;
     private GridLayout gridLayout3;
     private GridLayout gridLayout4;
 
     private GestureOverlayView gestureOverlayView;
-
-    private ToggleButton[] colourToggles;
 
     private int colour;
 
@@ -48,7 +45,7 @@ public class ConnectActivity extends ActionBarActivity {
         mathButton = (ImageButton)findViewById(R.id.mathButton);
         settingsButton = (ImageButton)findViewById(R.id.settingsButton);
 
-        gridLayout = (GridLayout)findViewById(R.id.connectGridLayout);
+        gridLayout = (RelativeLayout)findViewById(R.id.connectGridLayout);
         gridLayout2 = (GridLayout)findViewById(R.id.connectGridLayout2);
         gridLayout3 = (GridLayout)findViewById(R.id.connectGridLayout3);
         gridLayout4 = (GridLayout)findViewById(R.id.connectGridLayout4);
@@ -62,17 +59,6 @@ public class ConnectActivity extends ActionBarActivity {
         gestureOverlayView = (GestureOverlayView)findViewById(R.id.gestureOverlayView);
 
         colour = Color.BLACK;
-
-        colourToggles = new ToggleButton[9];
-        colourToggles[0] = (ToggleButton)findViewById(R.id.toggleButton);
-        colourToggles[1] = (ToggleButton)findViewById(R.id.toggleButton2);
-        colourToggles[2] = (ToggleButton)findViewById(R.id.toggleButton3);
-        colourToggles[3] = (ToggleButton)findViewById(R.id.toggleButton4);
-        colourToggles[4] = (ToggleButton)findViewById(R.id.toggleButton5);
-        colourToggles[5] = (ToggleButton)findViewById(R.id.toggleButton6);
-        colourToggles[6] = (ToggleButton)findViewById(R.id.toggleButton7);
-        colourToggles[7] = (ToggleButton)findViewById(R.id.toggleButton8);
-        colourToggles[8] = (ToggleButton)findViewById(R.id.toggleButton9);
 
         setGestureOn();
 
@@ -184,13 +170,6 @@ public class ConnectActivity extends ActionBarActivity {
     }
 
     public void toggleColour(View view) {
-        Button selButton = (Button)view;
-        if(selButton.getId() == R.id.toggleButton) {
-            colour = colourToggles[0].getSolidColor();
-            gestureOverlayView.setGestureColor(colour);
-            for(int i = 1; i < 9; i++) {
-                colourToggles[i].setChecked(false);
-            }
-        }
+
     }
 }
