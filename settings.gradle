@@ -1,1 +1,2 @@
-include ':app', ':backend'
+include ':app', ':back', ':backendEngine', ':backend', ':backend', ':backend', ':backend', ':'
+project(':backendEngine').projectDir = new File('back')

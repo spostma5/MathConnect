@@ -92,7 +92,7 @@ public class ChangePicture extends ActionBarActivity {
                     public void onClick(View arg0)
                     {
                         Intent returnIntent = new Intent();
-                        returnIntent.putExtra("PROFILE_PICTURE",pickedImage);
+                        returnIntent.setData(pickedImage);
                         setResult(RESULT_OK,returnIntent);
                         finish();
 

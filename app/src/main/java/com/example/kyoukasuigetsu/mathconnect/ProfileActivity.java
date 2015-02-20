@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 
 
@@ -28,8 +27,6 @@ public class ProfileActivity extends ActionBarActivity {
         setContentView(R.layout.activity_profile);
 
         imageView = (ImageView) findViewById(R.id.picView);
-        if (userPic != null)
-            imageView.setImageBitmap(userPic);
     }
 
 
@@ -42,12 +39,12 @@ public class ProfileActivity extends ActionBarActivity {
 
     public void gotoChangePass(View view) {
         Intent intent = new Intent(this, ChangePassword.class);
-        startActivityForResult(intent, 1);
+        startActivity(intent);
     }
 
     public void gotoChangePic(View view) {
         Intent intent = new Intent(this, ChangePicture.class);
-        startActivity(intent);
+        startActivityForResult(intent, 1);
     }
 
     @Override
@@ -81,27 +78,21 @@ public class ProfileActivity extends ActionBarActivity {
 
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
-                InputStream ImageStream = null;
+                InputStream ImageStream;
 
-                String uriStr = data.getStringExtra(data.getStringExtra("PROFILE_PICTURE"));
-                Uri pickedImage = Uri.parse(uriStr);
                 try {
+                    Uri pickedImage = data.getData();
                     ImageStream = getContentResolver().openInputStream(pickedImage);
-                } catch (FileNotFoundException e) {
-                    //Error
+
+                    final Bitmap selectedImage = BitmapFactory.decodeStream(ImageStream);
+
+                    imageView.setImageBitmap(selectedImage);
+                    imageView.invalidate();
+                } catch(FileNotFoundException e) {
+
                 }
 
-                userPic = BitmapFactory.decodeStream(ImageStream);
-                imageView.setImageBitmap(userPic);
-                imageView.invalidate();
 
-                if (ImageStream != null) {
-                    try {
-                        ImageStream.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
             }
             if (resultCode == RESULT_CANCELED) {
                 //Write your code if there's no result
