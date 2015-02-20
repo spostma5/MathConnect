@@ -1,9 +1,5 @@
 package com.example.kyoukasuigetsu.mathconnect;
 
-import android.gesture.Gesture;
-import android.gesture.GestureOverlayView;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
@@ -34,7 +30,7 @@ public class ConnectActivity extends ActionBarActivity {
     private GridLayout gridLayout3;
     private GridLayout gridLayout4;
 
-    private GestureOverlayView gestureOverlayView;
+    private Drawing drawingView;
 
     private Paint paint;
 
@@ -64,39 +60,7 @@ public class ConnectActivity extends ActionBarActivity {
         gridLayout4.setVisibility(View.INVISIBLE);
 
 
-        gestureOverlayView = (GestureOverlayView)findViewById(R.id.gestureOverlayView);
-        gestureOverlayView.setFadeEnabled(false);
-        gestureOverlayView.setDrawingCacheEnabled(true);
-
-        gestureOverlayView.addOnGesturePerformedListener(new GestureOverlayView.OnGesturePerformedListener() {
-            @Override
-            public void onGesturePerformed(GestureOverlayView overlay, Gesture gesture) {
-                gestureOverlayView.setGestureColor(colour);
-                gestureOverlayView.setUncertainGestureColor(colour);
-
-
-                Bitmap bm = Bitmap.createBitmap(gestureOverlayView.getDrawingCache());
-                Canvas canvas = new Canvas();
-                canvas.drawBitmap(bm,0,0,paint);
-                gestureOverlayView.draw(canvas);
-
-                gestureOverlayView.clearAnimation();
-            }
-        });
-
-        gestureOverlayView.addOnGesturingListener(new GestureOverlayView.OnGesturingListener() {
-            @Override
-            public void onGesturingStarted(GestureOverlayView overlay) {
-                gestureOverlayView.setGestureColor(colour);
-                gestureOverlayView.setUncertainGestureColor(colour);
-            }
-
-            @Override
-            public void onGesturingEnded(GestureOverlayView overlay) {
-                gestureOverlayView.setGestureColor(colour);
-                gestureOverlayView.setUncertainGestureColor(colour);
-            }
-        });
+        drawingView = (Drawing)findViewById(R.id.drawingView);
 
         colour = Color.BLACK;
 
@@ -104,8 +68,6 @@ public class ConnectActivity extends ActionBarActivity {
         paint.setColor(colour);
         paint.setStrokeWidth(new Float(.6));
         paint.setStyle(Paint.Style.FILL);
-
-        setGestureOn();
 
         setButtonSizes();
     }
@@ -153,14 +115,14 @@ public class ConnectActivity extends ActionBarActivity {
         gridLayout3.setVisibility(View.INVISIBLE);
         gridLayout4.setVisibility(View.INVISIBLE);
 
-        gestureOverlayView.setEnabled(false);
-
         if(gridLayout.getVisibility() == View.VISIBLE) {
             gridLayout.setVisibility(View.INVISIBLE);
-           setGestureOn();
+            showDrawing();
         }
-        else
+        else {
             gridLayout.setVisibility(View.VISIBLE);
+            hideDrawing();
+        }
     }
 
     public void onShapeButton(View view) {
@@ -168,14 +130,14 @@ public class ConnectActivity extends ActionBarActivity {
         gridLayout3.setVisibility(View.INVISIBLE);
         gridLayout4.setVisibility(View.INVISIBLE);
 
-        gestureOverlayView.setEnabled(false);
-
         if(gridLayout2.getVisibility() == View.VISIBLE) {
             gridLayout2.setVisibility(View.INVISIBLE);
-            setGestureOn();
+            showDrawing();
         }
-        else
+        else {
             gridLayout2.setVisibility(View.VISIBLE);
+            hideDrawing();
+        }
     }
 
     public void onMathButton(View view) {
@@ -183,14 +145,14 @@ public class ConnectActivity extends ActionBarActivity {
         gridLayout2.setVisibility(View.INVISIBLE);
         gridLayout4.setVisibility(View.INVISIBLE);
 
-        gestureOverlayView.setEnabled(false);
-
         if(gridLayout3.getVisibility() == View.VISIBLE) {
             gridLayout3.setVisibility(View.INVISIBLE);
-            setGestureOn();
+            showDrawing();
         }
-        else
+        else {
             gridLayout3.setVisibility(View.VISIBLE);
+            hideDrawing();
+        }
     }
 
     public void onSettingsButton(View view) {
@@ -198,25 +160,34 @@ public class ConnectActivity extends ActionBarActivity {
         gridLayout2.setVisibility(View.INVISIBLE);
         gridLayout3.setVisibility(View.INVISIBLE);
 
-        gestureOverlayView.setEnabled(false);
-
         if(gridLayout4.getVisibility() == View.VISIBLE) {
             gridLayout4.setVisibility(View.INVISIBLE);
-            setGestureOn();
+            showDrawing();
         }
-        else
+        else {
             gridLayout4.setVisibility(View.VISIBLE);
+            hideDrawing();
+        }
     }
 
-    public void setGestureOn() {
-        gestureOverlayView.setEnabled(true);
-        gestureOverlayView.setGestureVisible(true);
-        gestureOverlayView.setGestureColor(colour);
+    public void hideDrawing() {
+        drawingView.setVisibility(View.INVISIBLE);
+    }
+
+    public void showDrawing() {
+        drawingView.setVisibility(View.VISIBLE);
     }
 
     public void toggleColour(View view) {
         Button button = (Button)view;
         ColorDrawable mdraw = (ColorDrawable)button.getBackground();
         colour = mdraw.getColor();
+        drawingView.setColour(colour);
+    }
+
+    public void toggleSize(View view) {
+        Button button = (Button)view;
+        String size =  button.getText().toString();
+        drawingView.setSize(size);
     }
 }
