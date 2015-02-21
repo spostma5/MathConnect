@@ -26,15 +26,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.kyoukasuigetsu.mathconnect.backend.myApi.MyApi;
-import com.google.api.client.extensions.android.http.AndroidHttp;
-import com.google.api.client.extensions.android.json.AndroidJsonFactory;
-import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
-import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,6 +86,8 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
+        new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Manfred"));
     }
 
     private void populateAutoComplete() {
@@ -326,46 +320,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     protected void gotoHome() {
         Intent intent = new Intent(this,HomePage.class);
         startActivity(intent);
-    }
-}
-
-class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
-    private static MyApi myApiService = null;
-    private Context context;
-
-    @Override
-    protected String doInBackground(Pair<Context, String>... params) {
-        if(myApiService == null) {  // Only do this once
-            MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
-                    new AndroidJsonFactory(), null)
-                    // options for running against local devappserver
-                    // - 10.0.2.2 is localhost's IP address in Android emulator
-                    // - turn off compression when running against local devappserver
-                    .setRootUrl("http://10.0.2.2:8080/_ah/api/")
-                    .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
-                        @Override
-                        public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest) throws IOException {
-                            abstractGoogleClientRequest.setDisableGZipContent(true);
-                        }
-                    });
-            // end options for devappserver
-
-            myApiService = builder.build();
-        }
-
-        context = params[0].first;
-        String name = params[0].second;
-
-        try {
-            return myApiService.sayHi(name).execute().getData();
-        } catch (IOException e) {
-            return e.getMessage();
-        }
-    }
-
-    @Override
-    protected void onPostExecute(String result) {
-        Toast.makeText(context, result, Toast.LENGTH_LONG).show();
     }
 }
 
