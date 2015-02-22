@@ -38,11 +38,11 @@ public class MyEndpoint {
         }
         else if(user.equals("Sam@google.ca")) {
             response.setUsername("VALID");
-            response.setUsername("INVALID");
+            response.setPassword("INVALID");
         }
         else {
             response.setUsername("INVALID");
-            response.setUsername("VALID");
+            response.setPassword("VALID");
         }
 
         return response;

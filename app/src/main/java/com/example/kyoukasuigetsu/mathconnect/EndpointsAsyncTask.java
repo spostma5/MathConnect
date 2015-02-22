@@ -42,10 +42,11 @@ class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> 
         }
 
         context = params[0].first;
-        String name = params[0].second;
+        String user = params[0].second.split(";=;")[0];
+        String pass = params[0].second.split(";=;")[1];
 
         try {
-            return myApiService.userLogin("Sam@google.ca","password").execute().getUsername();
+            return myApiService.userLogin(user,pass).execute().getUser();
         } catch (IOException e) {
             return e.getMessage();
         }

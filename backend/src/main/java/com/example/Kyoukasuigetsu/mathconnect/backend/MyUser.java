@@ -9,6 +9,9 @@ public class MyUser {
 
     public String getUsername() { return username; }
     public String getPassword() { return password; }
+    public String getUser() {
+        return username + ";=;" + password;
+    }
 
     public void setUsername(String newUsername) { username = newUsername; }
     public void setPassword(String newPassword) { password = newPassword; }
