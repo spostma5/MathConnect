@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"c05bU6zpvXPOpQakG5gG3IOJh8Y/MDVI442tBRUvNhwYM5gx1pIxDGQ\"",
+ "etag": "\"c05bU6zpvXPOpQakG5gG3IOJh8Y/O92Az4DWsA9qvO6Sg-OwY4uBsiQ\"",
  "discoveryVersion": "v1",
  "id": "myApi:v1",
  "name": "myApi",
@@ -13,10 +13,10 @@
   "x32": "http://www.google.com/images/icons/product/search-32.gif"
  },
  "protocol": "rest",
- "baseUrl": "https://myApplicationId.appspot.com/_ah/api/myApi/v1/sayHi/",
- "basePath": "/_ah/api/myApi/v1/sayHi/",
- "rootUrl": "https://myApplicationId.appspot.com/_ah/api/",
- "servicePath": "myApi/v1/sayHi/",
+ "baseUrl": "https://glass-cedar-860.appspot.com/_ah/api/myApi/v1/",
+ "basePath": "/_ah/api/myApi/v1/",
+ "rootUrl": "https://glass-cedar-860.appspot.com/_ah/api/",
+ "servicePath": "myApi/v1/",
  "batchPath": "batch",
  "parameters": {
   "alt": {
@@ -81,12 +81,24 @@
      "type": "string"
     }
    }
+  },
+  "MyUser": {
+   "id": "MyUser",
+   "type": "object",
+   "properties": {
+    "password": {
+     "type": "string"
+    },
+    "username": {
+     "type": "string"
+    }
+   }
   }
  },
  "methods": {
   "sayHi": {
    "id": "myApi.sayHi",
-   "path": "{name}",
+   "path": "sayHi/{name}",
    "httpMethod": "POST",
    "parameters": {
     "name": {
@@ -100,6 +112,33 @@
    ],
    "response": {
     "$ref": "MyBean"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "userLogin": {
+   "id": "myApi.userLogin",
+   "path": "login/{user}/{pass}",
+   "httpMethod": "POST",
+   "parameters": {
+    "pass": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "user": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "user",
+    "pass"
+   ],
+   "response": {
+    "$ref": "MyUser"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"

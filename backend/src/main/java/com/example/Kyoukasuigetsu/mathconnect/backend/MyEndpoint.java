@@ -29,4 +29,23 @@ public class MyEndpoint {
         return response;
     }
 
+    @ApiMethod(name = "userLogin")
+    public MyUser login(@Named("user") String user,@Named("pass") String pass) {
+        MyUser response = new MyUser();
+        if(user.equals("Sam@google.ca") && pass.equals("password")) {
+            response.setUsername("Sam@google.ca");
+            response.setPassword("password");
+        }
+        else if(user.equals("Sam@google.ca")) {
+            response.setUsername("VALID");
+            response.setUsername("INVALID");
+        }
+        else {
+            response.setUsername("INVALID");
+            response.setUsername("VALID");
+        }
+
+        return response;
+    }
+
 }
