@@ -63,6 +63,7 @@
 
             <Button
                 android:id="@+id/email_sign_in_button"
+                android:onClick="signIn"
                 style="@style/Text_Button"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="30dp"
