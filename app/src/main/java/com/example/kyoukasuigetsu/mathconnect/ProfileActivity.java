@@ -10,6 +10,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import java.io.FileNotFoundException;
@@ -20,11 +21,22 @@ public class ProfileActivity extends ActionBarActivity {
 
     private Bitmap userPic;
     private ImageView imageView;
+    private User user;
+    private EditText mEmailView, mUserView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        Bundle data = getIntent().getExtras();
+        user = (User) data.getParcelable(LoginActivity.USER);
+
+        mEmailView = (EditText)findViewById(R.id.profile_email);
+        mUserView = (EditText)findViewById(R.id.profile_username);
+
+        mEmailView.setText(user.getEmail());
+        mUserView.setText(user.getUsername());
 
         imageView = (ImageView) findViewById(R.id.picView);
     }
@@ -39,6 +51,7 @@ public class ProfileActivity extends ActionBarActivity {
 
     public void gotoChangePass(View view) {
         Intent intent = new Intent(this, ChangePassword.class);
+        intent.putExtra(LoginActivity.USER,user);
         startActivity(intent);
     }
 

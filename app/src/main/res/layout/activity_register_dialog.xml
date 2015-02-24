@@ -31,6 +31,7 @@
                 android:id="@+id/email"
                 style="@style/Text_EnterFieldDialog"
                 android:hint="Email"
+                android:imeOptions="actionNext"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:singleLine="true" />
@@ -38,6 +39,7 @@
                 android:inputType="textPassword"
                 style="@style/Text_EnterFieldDialog"
                 android:hint="Password"
+                android:imeOptions="actionNext"
                 android:id="@+id/password"
                 android:maxLines="1"
                 android:layout_below="@+id/editText"
@@ -48,6 +50,7 @@
                 android:inputType="textPassword"
                 style="@style/Text_EnterFieldDialog"
                 android:hint="Confirm Password"
+                android:imeOptions="actionDone"
                 android:id="@+id/passwordConfirm"
                 android:maxLines="1"
                 android:layout_alignParentLeft="true"

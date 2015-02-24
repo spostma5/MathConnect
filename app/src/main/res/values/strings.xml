@@ -13,5 +13,7 @@
     <string name="title_activity_change_picture">ChangePicture</string>
     <string name="title_activity_gesture_program">GestureProgram</string>
     <string name="title_activity_login">Math Connect</string>
+    <string name="title_activity_friends">FriendsActivity</string>
+    <string name="title_activity_add_friend">AddFriend</string>
 
 </resources>

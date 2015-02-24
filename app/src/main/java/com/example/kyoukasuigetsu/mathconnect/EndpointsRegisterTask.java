@@ -1,6 +1,7 @@
 package com.example.kyoukasuigetsu.mathconnect;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Pair;
 import android.widget.Toast;
@@ -54,6 +55,18 @@ class EndpointsRegisterTask extends AsyncTask<Pair<Context, String>, Void, Strin
 
     @Override
     protected void onPostExecute(String result) {
-        Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+        Toast.makeText(context, "User Registered", Toast.LENGTH_LONG).show();
+
+        User user = new User(result,context);
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            //DO NOTHING
+        }
+
+        Intent intent = new Intent(context,LoginActivity.class);
+        intent.putExtra(LoginActivity.USER,user);
+        context.startActivity(intent);
     }
 }

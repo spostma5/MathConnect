@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"c05bU6zpvXPOpQakG5gG3IOJh8Y/CAOXcuXnFZUA0OYYdrkmVKX-Ioc\"",
+ "etag": "\"c05bU6zpvXPOpQakG5gG3IOJh8Y/1viS5B7fFlxW1hWKCvDCNhTTrEo\"",
  "discoveryVersion": "v1",
  "id": "myApi:v2",
  "name": "myApi",
@@ -89,6 +89,9 @@
     "email": {
      "type": "string"
     },
+    "friends": {
+     "type": "string"
+    },
     "password": {
      "type": "string"
     },
@@ -102,6 +105,33 @@
   }
  },
  "methods": {
+  "addFriend": {
+   "id": "myApi.addFriend",
+   "path": "addFriend/{user}/{friend}",
+   "httpMethod": "POST",
+   "parameters": {
+    "friend": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "user": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "user",
+    "friend"
+   ],
+   "response": {
+    "$ref": "MyUser"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
   "sayHi": {
    "id": "myApi.sayHi",
    "path": "sayHi/{name}",
@@ -126,6 +156,33 @@
   "userLogin": {
    "id": "myApi.userLogin",
    "path": "login/{user}/{pass}",
+   "httpMethod": "POST",
+   "parameters": {
+    "pass": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "user": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "user",
+    "pass"
+   ],
+   "response": {
+    "$ref": "MyUser"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "userPassChange": {
+   "id": "myApi.userPassChange",
+   "path": "passChange/{user}/{pass}",
    "httpMethod": "POST",
    "parameters": {
     "pass": {

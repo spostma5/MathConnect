@@ -10,11 +10,15 @@ import android.view.View;
 
 
 public class HomePage extends ActionBarActivity {
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
+        Bundle data = getIntent().getExtras();
+        user = (User) data.getParcelable(LoginActivity.USER);
     }
 
     @Override
@@ -42,11 +46,13 @@ public class HomePage extends ActionBarActivity {
 
     public void gotoProfile(View view) {
         Intent intent = new Intent(this,ProfileActivity.class);
+        intent.putExtra(LoginActivity.USER,user);
         startActivity(intent);
     }
 
     public void gotoConnect(View view) {
         Intent intent = new Intent(this,ConnectActivity.class);
+        intent.putExtra(LoginActivity.USER,user);
         startActivity(intent);
     }
 

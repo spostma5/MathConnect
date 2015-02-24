@@ -78,13 +78,11 @@ public class RegisterDialog extends ActionBarActivity {
             // form field with an error.
             focusView.requestFocus();
         } else {
-            new EndpointsRegisterTask().execute(new Pair<Context, String>(this, email + ";=;" + password));
-            try {
-                Thread.sleep(2000);
-            } catch(InterruptedException e) {
-                //do nothing
-            }
-            finish();
+            String cipherPass = LoginActivity.toSHA1(password.getBytes());
+
+            new EndpointsRegisterTask().execute(new Pair<Context, String>(this, email + ";=;" + cipherPass));
+
+            //finish();
         }
     }
 

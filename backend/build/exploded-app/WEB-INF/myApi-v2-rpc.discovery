@@ -1,6 +1,6 @@
 {
  "kind": "discovery#rpcDescription",
- "etag": "\"c05bU6zpvXPOpQakG5gG3IOJh8Y/CAOXcuXnFZUA0OYYdrkmVKX-Ioc\"",
+ "etag": "\"c05bU6zpvXPOpQakG5gG3IOJh8Y/1viS5B7fFlxW1hWKCvDCNhTTrEo\"",
  "discoveryVersion": "v1",
  "id": "myApi:v2",
  "name": "myApi",
@@ -87,6 +87,9 @@
     "email": {
      "type": "string"
     },
+    "friends": {
+     "type": "string"
+    },
     "password": {
      "type": "string"
     },
@@ -100,6 +103,29 @@
   }
  },
  "methods": {
+  "myApi.addFriend": {
+   "id": "myApi.addFriend",
+   "parameters": {
+    "friend": {
+     "type": "string",
+     "required": true
+    },
+    "user": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "user",
+    "friend"
+   ],
+   "returns": {
+    "$ref": "MyUser"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
   "myApi.sayHi": {
    "id": "myApi.sayHi",
    "parameters": {
@@ -120,6 +146,29 @@
   },
   "myApi.userLogin": {
    "id": "myApi.userLogin",
+   "parameters": {
+    "pass": {
+     "type": "string",
+     "required": true
+    },
+    "user": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "user",
+    "pass"
+   ],
+   "returns": {
+    "$ref": "MyUser"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "myApi.userPassChange": {
+   "id": "myApi.userPassChange",
    "parameters": {
     "pass": {
      "type": "string",

@@ -10,8 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/Text_EnterField"
-        android:id="@+id/editText"
-        android:text="spostma5@uwo.ca"
+        android:id="@+id/profile_email"
+        android:text="email"
         android:gravity="center"
         android:textAlignment="gravity"
         android:enabled="false"
@@ -51,7 +51,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/editText">
+        android:layout_above="@+id/profile_email">
 
         <ImageView
             android:layout_width="match_parent"
@@ -76,8 +76,8 @@
             style="@style/Text_EnterField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText2"
-            android:text="spostma5"
+            android:id="@+id/profile_username"
+            android:text="username"
             android:gravity="center"
             android:textAlignment="gravity"
             android:enabled="false"

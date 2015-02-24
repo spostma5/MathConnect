@@ -52,15 +52,22 @@ public class MyEndpoint {
 
 
 
-        if(user.equals("Sam@google.ca") && pass.equals("password")) {
-            response.setUsername("Sam@google.ca");
-            response.setPassword("password");
-        }
-        else if(user.equals("Sam@google.ca")) {
-            response.setUsername("VALID");
-            response.setPassword("INVALID");
-        }
-        else {
+        try {
+            if(user.equals(mEntity.getProperty("email")) && pass.equals(mEntity.getProperty("password"))) {
+                response.setEmail(user);
+                response.setPassword(pass);
+                response.setUsername(mEntity.getProperty("username").toString());
+                response.setFriends(mEntity.getProperty("friends").toString());
+            }
+            else if(user.equals(mEntity.getProperty("email"))) {
+                response.setUsername("VALID");
+                response.setPassword("INVALID");
+            }
+            else {
+                response.setUsername("INVALID");
+                response.setPassword("VALID");
+            }
+        } catch (NullPointerException e) {
             response.setUsername("INVALID");
             response.setPassword("VALID");
         }
@@ -87,6 +94,46 @@ public class MyEndpoint {
             newUser.setProperty("profile_pic","null");
 
         datastore.put(newUser);
+
+        return response;
+    }
+
+    @ApiMethod(name = "userPassChange")
+    public MyUser passChange(@Named("user") String user,@Named("pass") String pass) {
+        MyUser response = new MyUser();
+
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+
+        Query.Filter mFilter = new Query.FilterPredicate("email", Query.FilterOperator.EQUAL,user);
+        Query mQuery = new Query("user")
+                .setFilter(mFilter);
+
+        Entity mEntity = datastore.prepare(mQuery)
+                .asSingleEntity();
+
+        mEntity.setProperty("password",pass);
+
+        datastore.put(mEntity);
+
+        return response;
+    }
+
+    @ApiMethod(name = "addFriend")
+    public MyUser addFriend(@Named("user") String user,@Named("friend") String friend) {
+        MyUser response = new MyUser();
+
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+
+        Query.Filter mFilter = new Query.FilterPredicate("email", Query.FilterOperator.EQUAL,user);
+        Query mQuery = new Query("user")
+                .setFilter(mFilter);
+
+        Entity mEntity = datastore.prepare(mQuery)
+                .asSingleEntity();
+
+        mEntity.setProperty("friends",friend);
+
+        datastore.put(mEntity);
 
         return response;
     }

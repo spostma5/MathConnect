@@ -57,11 +57,14 @@ class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> 
         String user = result.split(";=;")[0];
         String pass = result.split(";=;")[1];
         Intent intent = new Intent(context,HomePage.class);
+
+        User userClass = new User(result,context);
         if(user.equals("INVALID") || pass.equals("INVALID")) {
             LoginActivity.mPasswordView.setError("Invalid username or password");
             LoginActivity.mPasswordView.requestFocus();
         }
         else {
+            intent.putExtra(LoginActivity.USER,userClass);
             context.startActivity(intent);
         }
     }
