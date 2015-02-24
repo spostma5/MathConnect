@@ -1,9 +1,10 @@
 package com.example.kyoukasuigetsu.mathconnect;
 
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
+import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,16 +25,9 @@ public class RegisterDialog extends ActionBarActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_register_dialog);
 
-        Intent intent = getIntent();
-        String email = intent.getStringExtra(LoginActivity.EMAIL);
-
         //Initialize fields and set focus
         mEmail = (AutoCompleteTextView) findViewById(R.id.email);
-        mEmail.setText(email);
-
         mPassword = (EditText) findViewById(R.id.password);
-        mPassword.requestFocus();
-
         mPasswordConfirm = (EditText) findViewById(R.id.passwordConfirm);
     }
 
@@ -84,7 +78,12 @@ public class RegisterDialog extends ActionBarActivity {
             // form field with an error.
             focusView.requestFocus();
         } else {
-            // TODO: add return information and create user
+            new EndpointsRegisterTask().execute(new Pair<Context, String>(this, email + ";=;" + password));
+            try {
+                Thread.sleep(2000);
+            } catch(InterruptedException e) {
+                //do nothing
+            }
             finish();
         }
     }

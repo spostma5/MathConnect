@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">MathConnect</string>
+    <string name="app_name">Math Connect</string>
     <string name="title_activity_register_dialog">Register</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -12,6 +12,6 @@
     <string name="title_activity_change_password">ChangePassword</string>
     <string name="title_activity_change_picture">ChangePicture</string>
     <string name="title_activity_gesture_program">GestureProgram</string>
-    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_login">Math Connect</string>
 
 </resources>

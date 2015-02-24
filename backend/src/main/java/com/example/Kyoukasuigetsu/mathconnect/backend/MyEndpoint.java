@@ -9,13 +9,20 @@ package com.example.Kyoukasuigetsu.mathconnect.backend;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.Query;
 
 import javax.inject.Named;
+
+import static com.google.appengine.api.datastore.KeyFactory.*;
 
 /**
  * An endpoint class we are exposing
  */
-@Api(name = "myApi", version = "v1", namespace = @ApiNamespace(ownerDomain = "backend.mathconnect.Kyoukasuigetsu.example.com", ownerName = "backend.mathconnect.Kyoukasuigetsu.example.com", packagePath = ""))
+@Api(name = "myApi", version = "v2", namespace = @ApiNamespace(ownerDomain = "backend.mathconnect.Kyoukasuigetsu.example.com", ownerName = "backend.mathconnect.Kyoukasuigetsu.example.com", packagePath = ""))
 public class MyEndpoint {
 
     /**
@@ -32,6 +39,19 @@ public class MyEndpoint {
     @ApiMethod(name = "userLogin")
     public MyUser login(@Named("user") String user,@Named("pass") String pass) {
         MyUser response = new MyUser();
+
+
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+
+        Query.Filter mFilter = new Query.FilterPredicate("email", Query.FilterOperator.EQUAL,user);
+        Query mQuery = new Query("user")
+                .setFilter(mFilter);
+
+        Entity mEntity = datastore.prepare(mQuery)
+                .asSingleEntity();
+
+
+
         if(user.equals("Sam@google.ca") && pass.equals("password")) {
             response.setUsername("Sam@google.ca");
             response.setPassword("password");
@@ -48,4 +68,26 @@ public class MyEndpoint {
         return response;
     }
 
+    @ApiMethod(name = "userRegister")
+    public MyUser register(@Named("user") String user,@Named("pass") String pass) {
+        MyUser response = new MyUser();
+        response.setUsername(user);
+        response.setEmail(user.split("@")[0]);
+        response.setPassword(pass);
+
+
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+
+        Key newKey = createKey("user", user);
+        Entity newUser = new Entity(newKey);
+            newUser.setProperty("email",user);
+            newUser.setProperty("username",user.split("@")[0]);
+            newUser.setProperty("password",pass);
+            newUser.setProperty("friends","null");
+            newUser.setProperty("profile_pic","null");
+
+        datastore.put(newUser);
+
+        return response;
+    }
 }

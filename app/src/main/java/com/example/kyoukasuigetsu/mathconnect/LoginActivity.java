@@ -15,6 +15,8 @@ import android.widget.EditText;
 public class LoginActivity extends ActionBarActivity {
 
     public static final String EMAIL = "EMAIL";
+    public AutoCompleteTextView mEmailView;
+    public static EditText mPasswordView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +48,16 @@ public class LoginActivity extends ActionBarActivity {
     }
 
     public void signIn(View view) {
-        Intent intent = new Intent(this,HomePage.class);
-        AutoCompleteTextView mEmailView = (AutoCompleteTextView)findViewById(R.id.email);
-        EditText mPasswordView = (EditText)findViewById(R.id.password);
+        mEmailView = (AutoCompleteTextView)findViewById(R.id.email);
+        mPasswordView = (EditText)findViewById(R.id.password);
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
 
         new EndpointsAsyncTask().execute(new Pair<Context, String>(LoginActivity.this, email + ";=;" + password));
+    }
+
+    public void register(View view) {
+        Intent intent = new Intent(this,RegisterDialog.class);
         startActivity(intent);
     }
 }

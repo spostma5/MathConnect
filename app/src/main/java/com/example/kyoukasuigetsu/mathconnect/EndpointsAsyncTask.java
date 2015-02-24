@@ -1,9 +1,9 @@
 package com.example.kyoukasuigetsu.mathconnect;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Pair;
-import android.widget.Toast;
 
 import com.example.kyoukasuigetsu.mathconnect.backend.myApi.MyApi;
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -54,6 +54,15 @@ class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> 
 
     @Override
     protected void onPostExecute(String result) {
-        Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+        String user = result.split(";=;")[0];
+        String pass = result.split(";=;")[1];
+        Intent intent = new Intent(context,HomePage.class);
+        if(user.equals("INVALID") || pass.equals("INVALID")) {
+            LoginActivity.mPasswordView.setError("Invalid username or password");
+            LoginActivity.mPasswordView.requestFocus();
+        }
+        else {
+            context.startActivity(intent);
+        }
     }
 }
