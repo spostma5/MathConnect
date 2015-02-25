@@ -3,18 +3,15 @@ package com.example.kyoukasuigetsu.mathconnect;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Base64;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 
 
 public class ProfileActivity extends ActionBarActivity {
@@ -29,6 +26,7 @@ public class ProfileActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        Intent intent = getIntent();
         Bundle data = getIntent().getExtras();
         user = (User) data.getParcelable(LoginActivity.USER);
 
@@ -38,8 +36,21 @@ public class ProfileActivity extends ActionBarActivity {
         mEmailView.setText(user.getEmail());
         mUserView.setText(user.getUsername());
 
-        imageView = (ImageView) findViewById(R.id.picView);
+        imageView = (ImageView) findViewById(R.id.imageView4);
+
+        try {
+             String picture = user.getProfilePic();
+
+            byte[] decodedString = Base64.decode(picture,Base64.DEFAULT);
+            Bitmap selectedImage = BitmapFactory.decodeByteArray(decodedString,0,decodedString.length);
+
+            imageView.setImageBitmap(selectedImage);
+            imageView.invalidate();
+        } catch(Exception e) {
+            //DO NOTHING
+        }
     }
+
 
 
     @Override
@@ -57,7 +68,8 @@ public class ProfileActivity extends ActionBarActivity {
 
     public void gotoChangePic(View view) {
         Intent intent = new Intent(this, ChangePicture.class);
-        startActivityForResult(intent, 1);
+        intent.putExtra(LoginActivity.USER,user);
+        startActivity(intent);
     }
 
     @Override
@@ -87,30 +99,10 @@ public class ProfileActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        if (requestCode == 1) {
-            if (resultCode == RESULT_OK) {
-                InputStream ImageStream;
-
-                try {
-                    Uri pickedImage = data.getData();
-                    ImageStream = getContentResolver().openInputStream(pickedImage);
-
-                    final Bitmap selectedImage = BitmapFactory.decodeStream(ImageStream);
-
-                    imageView.setImageBitmap(selectedImage);
-                    imageView.invalidate();
-                } catch(FileNotFoundException e) {
-
-                }
-
-
-            }
-            if (resultCode == RESULT_CANCELED) {
-                //Write your code if there's no result
-            }
-        }
-
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this,HomePage.class);
+        intent.putExtra(LoginActivity.USER,user);
+        this.startActivity(intent);
     }
 }

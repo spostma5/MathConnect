@@ -1,8 +1,6 @@
 package com.example.kyoukasuigetsu.mathconnect;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -13,7 +11,7 @@ import java.util.ArrayList;
  */
 public class User implements Parcelable{
     private String username, password, email;
-    private Bitmap profilePic;
+    private String profilePic;
     private ArrayList<String> friends;
     private Context context;
 
@@ -22,7 +20,7 @@ public class User implements Parcelable{
         password = "INVALID";
         email = "INVALID";
         context = c;
-        profilePic = BitmapFactory.decodeResource(context.getResources(),R.drawable.userblank);
+        profilePic = "";
         friends = new ArrayList<String>();
     }
 
@@ -31,21 +29,43 @@ public class User implements Parcelable{
         password = str.split(";=;")[1];
         email = str.split(";=;")[2];
         context = c;
-        profilePic = BitmapFactory.decodeResource(context.getResources(),R.drawable.userblank);
+        profilePic = "";
+
         friends = new ArrayList<String>();
+        try {
+            String frStr = str.split(";=;")[3];
+            for(int i = 0; i < frStr.split("=;=").length;i++) {
+                friends.add(frStr.split("=;=")[i]);
+            }
+        } catch (Exception e) {
+            //DO NOTHING
+        }
     }
 
     public User(Parcel in) {
-        String[] data = new String[4];
+        String[] data = new String[5];
 
         in.readStringArray(data);
         this.username = data[0];
         this.password = data[1];
         this.email = data[2];
 
+        try {
+            if(data[3].split("=;=")[0].isEmpty()) {
+                data[3] = data[3].substring(3);
+            }
+        } catch(Exception e) {
+            //DO NOTHING
+        }
         friends = new ArrayList<String>();
         for(int i=0; i<data[3].split("=;=").length; i++) {
             friends.add(data[3].split("=;=")[i]);
+        }
+
+        try {
+            this.profilePic = data[4];
+        } catch(Exception e) {
+            this.profilePic = "";
         }
     }
 
@@ -65,7 +85,8 @@ public class User implements Parcelable{
         dest.writeStringArray(new String[] {this.username,
                                             this.password,
                                             this.email,
-                                            friendString});
+                                            friendString,
+                                            this.profilePic});
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
@@ -88,9 +109,10 @@ public class User implements Parcelable{
         email = newEmail;
     }
 
-    public String getUsername() { return username; }
-    public String getPassword() { return password; }
-    public String getEmail()    { return email;    }
+    public String getUsername()     { return username; }
+    public String getPassword()     { return password; }
+    public String getEmail()        { return email;    }
+    public String getProfilePic()   { return profilePic; }
 
     public String getFriendsString() {
         String response = "";
@@ -104,6 +126,10 @@ public class User implements Parcelable{
 
     public void addFriend(String friend) {
         friends.add(friend);
+    }
+
+    public void setProfilePic(String pic) {
+        profilePic = pic;
     }
 
     public ArrayList<String> getFriends() {

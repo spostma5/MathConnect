@@ -45,6 +45,9 @@ class EndpointsFriendTask extends AsyncTask<Pair<Context, String>, Void, String>
         context = params[0].first;
         String user = params[0].second.split(";=;")[0];
         String friend = params[0].second.split(";=;")[1];
+        if(friend.split("=;=")[0].isEmpty()) {
+            friend = friend.substring(3);
+        }
 
         try {
             return myApiService.addFriend(user, friend).execute().getUser();
@@ -65,7 +68,7 @@ class EndpointsFriendTask extends AsyncTask<Pair<Context, String>, Void, String>
             //DO NOTHING
         }
 
-        Intent intent = new Intent(context,ProfileActivity.class);
+        Intent intent = new Intent(context,FriendsActivity.class);
         intent.putExtra(LoginActivity.USER,user);
         context.startActivity(intent);
     }

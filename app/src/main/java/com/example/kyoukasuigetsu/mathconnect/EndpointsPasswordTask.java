@@ -47,7 +47,7 @@ class EndpointsPasswordTask extends AsyncTask<Pair<Context, String>, Void, Strin
         String pass = params[0].second.split(";=;")[1];
 
         try {
-            return myApiService.userRegister(user, pass).execute().getUser();
+            return myApiService.userPassChange(user, pass).execute().getUser();
         } catch (IOException e) {
             return e.getMessage();
         }

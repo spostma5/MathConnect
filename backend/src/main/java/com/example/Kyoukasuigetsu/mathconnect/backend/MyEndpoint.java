@@ -115,6 +115,11 @@ public class MyEndpoint {
 
         datastore.put(mEntity);
 
+        response.setEmail(user);
+        response.setPassword(pass);
+        response.setUsername(mEntity.getProperty("username").toString());
+        response.setFriends(mEntity.getProperty("friends").toString());
+
         return response;
     }
 
@@ -134,6 +139,11 @@ public class MyEndpoint {
         mEntity.setProperty("friends",friend);
 
         datastore.put(mEntity);
+
+        response.setEmail(user);
+        response.setPassword(mEntity.getProperty("password").toString());
+        response.setUsername(mEntity.getProperty("username").toString());
+        response.setFriends(friend);
 
         return response;
     }

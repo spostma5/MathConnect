@@ -55,8 +55,21 @@ public class FriendsActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this,HomePage.class);
+        intent.putExtra(LoginActivity.USER,user);
+        this.startActivity(intent);
+    }
+
     public void addFriend(View view) {
         Intent intent = new Intent(this,AddFriend.class);
+        intent.putExtra(LoginActivity.USER,user);
+        startActivity(intent);
+    }
+
+    public void startConnect(View view) {
+        Intent intent = new Intent(this,ConnectActivity.class);
         intent.putExtra(LoginActivity.USER,user);
         startActivity(intent);
     }

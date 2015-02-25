@@ -51,9 +51,15 @@ public class HomePage extends ActionBarActivity {
     }
 
     public void gotoConnect(View view) {
-        Intent intent = new Intent(this,ConnectActivity.class);
+        Intent intent = new Intent(this,FriendsActivity.class);
         intent.putExtra(LoginActivity.USER,user);
         startActivity(intent);
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        //DO NOTHING
     }
 
     @Override

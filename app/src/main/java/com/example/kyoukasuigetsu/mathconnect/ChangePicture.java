@@ -7,10 +7,12 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,17 +22,21 @@ public class ChangePicture extends ActionBarActivity {
 
     //Image loading result to pass to startActivityForResult method
     public static final int LOAD_IMAGE_RESULTS = 1;
-    private Bitmap bitmap;
+    public static final String PICTURE = "PICTURE";
 
     //GUI components
     private Button button; //the button
     private ImageView image; //the imageview
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_picture);
+
+        Bundle data = getIntent().getExtras();
+        user = (User) data.getParcelable(LoginActivity.USER);
 
         //Find references to the GUI objects
         button = (Button)findViewById(R.id.pictureButton);
@@ -47,7 +53,6 @@ public class ChangePicture extends ActionBarActivity {
                 Intent i = new Intent(Intent.ACTION_PICK);
 
                 i.setType("image/*");
-
 
                 //Start new activity with the LOAD_IMAGE_RESULT to handle back the result when the image is picked from the Image Gallery
                 startActivityForResult(i, LOAD_IMAGE_RESULTS);
@@ -85,17 +90,17 @@ public class ChangePicture extends ActionBarActivity {
                 image.setImageBitmap(selectedImage);
 
                 button.setText("Confirm");
-                button.setOnClickListener(new View.OnClickListener()
-                {
+                button.setOnClickListener(new Button.OnClickListener() {
+                    public void onClick(View view) {
+                        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                        selectedImage.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                        byte[] byteArray = byteArrayOutputStream.toByteArray();
 
-                    @Override
-                    public void onClick(View arg0)
-                    {
-                        Intent returnIntent = new Intent();
-                        returnIntent.setData(pickedImage);
-                        setResult(RESULT_OK,returnIntent);
-                        finish();
+                        String picture = Base64.encodeToString(byteArray, Base64.DEFAULT);
 
+                        user.setProfilePic(picture);
+
+                        gotoProfile();
                     }
                 });
             }
@@ -126,6 +131,12 @@ public class ChangePicture extends ActionBarActivity {
 
     }
 
+    public void gotoProfile() {
+        Intent intent = new Intent(this,ProfileActivity.class);
+
+        intent.putExtra(LoginActivity.USER,user);
+        startActivity(intent);
+    }
 
     public void cancelClick(View view) {
         this.onBackPressed();
