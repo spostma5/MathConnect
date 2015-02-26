@@ -5,12 +5,12 @@ package com.example.Kyoukasuigetsu.mathconnect.backend;
  */
 public class MyUser {
 
-    private String username,password, email, friends;
+    private String username,password, email, friends, picture;
 
     public String getUsername() { return username; }
     public String getPassword() { return password; }
     public String getUser() {
-        String toReturn = username + ";=;" + password + ";=;" + email + ";=;" + friends;
+        String toReturn = username + ";=;" + password + ";=;" + email + ";=;" + friends + ";=;" + picture;
 
         return toReturn;
     }
@@ -19,8 +19,8 @@ public class MyUser {
     public void setUsername(String newUsername) { username = newUsername; }
     public void setPassword(String newPassword) { password = newPassword; }
     public void setEmail   (String newEmail)    { email    = newEmail   ; }
-
     public void setFriends(String newFriends) {
         friends = newFriends;
     }
+    public void setPicture(String newPicture) { picture = newPicture; }
 }

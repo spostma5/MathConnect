@@ -1,6 +1,6 @@
 {
  "kind": "discovery#rpcDescription",
- "etag": "\"c05bU6zpvXPOpQakG5gG3IOJh8Y/1viS5B7fFlxW1hWKCvDCNhTTrEo\"",
+ "etag": "\"c05bU6zpvXPOpQakG5gG3IOJh8Y/j3I98UKpdbHjcVYNhS2TTQCbOQA\"",
  "discoveryVersion": "v1",
  "id": "myApi:v2",
  "name": "myApi",
@@ -93,6 +93,9 @@
     "password": {
      "type": "string"
     },
+    "picture": {
+     "type": "string"
+    },
     "user": {
      "type": "string"
     },
@@ -139,6 +142,29 @@
    ],
    "returns": {
     "$ref": "MyBean"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "myApi.setPicture": {
+   "id": "myApi.setPicture",
+   "parameters": {
+    "picture": {
+     "type": "string",
+     "required": true
+    },
+    "user": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "user",
+    "picture"
+   ],
+   "returns": {
+    "$ref": "MyUser"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"

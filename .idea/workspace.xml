@@ -25,18 +25,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ef6225d9-14b8-4baf-8fa1-187997d107a8" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/EndpointsPictureTask.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/ChangePicture.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/ChangePicture.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/ConnectActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/ConnectActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/EndpointsFriendTask.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/EndpointsFriendTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/EndpointsPasswordTask.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/EndpointsPasswordTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/FriendsActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/FriendsActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/HomePage.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/HomePage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/LoginActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/LoginActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/Drawing.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/Drawing.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/Kyoukasuigetsu/mathconnect/backend/MyEndpoint.java" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/Kyoukasuigetsu/mathconnect/backend/MyEndpoint.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/Kyoukasuigetsu/mathconnect/backend/MyUser.java" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/Kyoukasuigetsu/mathconnect/backend/MyUser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/ProfileActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/ProfileActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/User.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_friends.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_friends.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_connect.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_connect.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -69,18 +66,8 @@
       <file leaf-file-name="FriendsActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/FriendsActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1275">
-              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Activity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-21/android/app/Activity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="59968" max-vertical-offset="101796">
-              <caret line="3722" column="0" selection-start-line="3722" selection-start-column="0" selection-end-line="3722" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="474" max-vertical-offset="1275">
+              <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -89,54 +76,54 @@
       <file leaf-file-name="ChangePicture.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/ChangePicture.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2159">
-              <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1086" max-vertical-offset="2108">
+              <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
               <folding>
-                <element signature="e#3100#3691#0" expanded="true" />
-                <element signature="e#3672#3673#0" expanded="true" />
+                <element signature="e#3158#3865#0" expanded="true" />
+                <element signature="e#3846#3847#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="View.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-21/android/view/View.java">
+      <file leaf-file-name="HomePage.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/HomePage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="283518" max-vertical-offset="347888">
-              <caret line="17107" column="0" selection-start-line="17107" selection-start-column="0" selection-end-line="17107" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1360">
+              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="20" selection-end-column="61" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Handler.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-21/android/os/Handler.java">
+      <file leaf-file-name="MyEndpoint.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/example/Kyoukasuigetsu/mathconnect/backend/MyEndpoint.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1233" max-vertical-offset="12699">
-              <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1936" max-vertical-offset="2873">
+              <caret line="93" column="47" selection-start-line="93" selection-start-column="47" selection-end-line="93" selection-end-column="47" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Looper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-21/android/os/Looper.java">
+      <file leaf-file-name="EndpointsPictureTask.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/EndpointsPictureTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2134" max-vertical-offset="4675">
-              <caret line="153" column="0" selection-start-line="153" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="678" max-vertical-offset="1887">
+              <caret line="79" column="26" selection-start-line="79" selection-start-column="26" selection-end-line="79" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Message.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-21/android/os/Message.java">
+      <file leaf-file-name="ConnectActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/ConnectActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="6809" max-vertical-offset="9214">
-              <caret line="423" column="54" selection-start-line="423" selection-start-column="53" selection-end-line="423" selection-end-column="54" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1273" max-vertical-offset="3400">
+              <caret line="114" column="34" selection-start-line="114" selection-start-column="34" selection-end-line="114" selection-end-column="34" />
               <folding>
-                <element signature="e#13265#13266#0" expanded="true" />
-                <element signature="e#13297#13298#0" expanded="true" />
+                <element signature="e#3564#3565#0" expanded="true" />
+                <element signature="e#3605#3606#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -145,31 +132,41 @@
       <file leaf-file-name="ProfileActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/ProfileActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1734">
-              <caret line="38" column="61" selection-start-line="38" selection-start-column="61" selection-end-line="38" selection-end-column="61" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="1853">
+              <caret line="55" column="30" selection-start-line="55" selection-start-column="30" selection-end-line="55" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_profile.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml">
+      <file leaf-file-name="Drawing.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/Drawing.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1222" max-vertical-offset="1819">
+              <caret line="105" column="56" selection-start-line="105" selection-start-column="56" selection-end-line="105" selection-end-column="56" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6130653" vertical-offset="926" max-vertical-offset="2227">
+              <caret line="82" column="48" selection-start-line="82" selection-start-column="48" selection-end-line="82" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_connect.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_connect.xml">
           <provider editor-type-id="android-designer">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4473684" vertical-offset="748" max-vertical-offset="1870">
-              <caret line="59" column="34" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ChangePassword.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/ChangePassword.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="952" max-vertical-offset="1683">
-              <caret line="89" column="116" selection-start-line="89" selection-start-column="116" selection-end-line="89" selection-end-column="116" />
+            <state vertical-scroll-proportion="-11.481482" vertical-offset="4314" max-vertical-offset="4981">
+              <caret line="272" column="17" selection-start-line="272" selection-start-column="17" selection-end-line="272" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -1725,7 +1722,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/RegisterDialogFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/dialog_register" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/basic_edit.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/basic_button.xml" />
@@ -1737,10 +1733,8 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_gesture_program.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_gesture_program.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/BackendLogin.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/Drawing.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/paint.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_connect.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_home_page.xml" />
         <option value="$PROJECT_DIR$/app/mathconnect/src/main/webapp/WEB-INF/guestbook.jsp" />
         <option value="$PROJECT_DIR$/app/mathconnect/src/main/webapp/WEB-INF/stylesheets/main.css" />
@@ -1762,20 +1756,23 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/EndpointsFriendActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_add_friend.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/AddFriend.java" />
-        <option value="$PROJECT_DIR$/backend/src/main/java/com/example/Kyoukasuigetsu/mathconnect/backend/MyUser.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_friends.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/FriendsActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/ConnectActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/HomePage.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/LoginActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/EndpointsFriendTask.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/ChangePassword.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/EndpointsPasswordTask.java" />
-        <option value="$PROJECT_DIR$/backend/src/main/java/com/example/Kyoukasuigetsu/mathconnect/backend/MyEndpoint.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/User.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/ChangePicture.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/ProfileActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/ProfileActivity.java" />
+        <option value="$PROJECT_DIR$/backend/src/main/java/com/example/Kyoukasuigetsu/mathconnect/backend/MyUser.java" />
+        <option value="$PROJECT_DIR$/backend/src/main/java/com/example/Kyoukasuigetsu/mathconnect/backend/MyEndpoint.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/ChangePicture.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/EndpointsPictureTask.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/Drawing.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/ConnectActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_connect.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/User.java" />
       </list>
     </option>
   </component>
@@ -2552,7 +2549,7 @@
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3319149" sideWeight="0.43443498" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33510637" sideWeight="0.56556505" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33510637" sideWeight="0.56556505" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2629,25 +2626,23 @@
           <properties />
           <option name="timeStamp" value="105" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/EndpointsPictureTask.java</url>
+          <line>59</line>
+          <properties />
+          <option name="timeStamp" value="142" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/EndpointsPictureTask.java</url>
+          <line>51</line>
+          <properties />
+          <option name="timeStamp" value="143" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="142" />
+      <option name="time" value="144" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-21/com/android/internal/os/RuntimeInit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="570" max-vertical-offset="6664">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-21/android/app/ApplicationErrorReport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4973" max-vertical-offset="10030">
-          <caret line="334" column="0" selection-start-line="334" selection-start-column="0" selection-end-line="334" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -2692,14 +2687,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/example/Kyoukasuigetsu/mathconnect/backend/MyUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
-          <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/RegisterDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="267" max-vertical-offset="2006">
@@ -2707,14 +2694,6 @@
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/Drawing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="1649">
-          <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2729,34 +2708,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/ConnectActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="731" max-vertical-offset="3145">
-          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="77" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-21/android/app/LoadedApk.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1726" max-vertical-offset="19465">
           <caret line="173" column="0" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="831" max-vertical-offset="1717">
-          <caret line="78" column="5" selection-start-line="78" selection-start-column="5" selection-end-line="78" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/EndpointsAsyncTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="552" max-vertical-offset="1139">
-          <caret line="67" column="42" selection-start-line="67" selection-start-column="42" selection-end-line="67" selection-end-column="42" />
           <folding />
         </state>
       </provider>
@@ -2769,34 +2724,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/EndpointsFriendTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="603" max-vertical-offset="1190">
-          <caret line="66" column="39" selection-start-line="66" selection-start-column="39" selection-end-line="66" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/EndpointsRegisterTask.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="590" max-vertical-offset="1139">
           <caret line="65" column="9" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/example/Kyoukasuigetsu/mathconnect/backend/MyEndpoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1381" max-vertical-offset="2397">
-          <caret line="138" column="46" selection-start-line="138" selection-start-column="46" selection-end-line="138" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/EndpointsPasswordTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1139">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2814,27 +2745,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="10838" max-vertical-offset="12359">
           <caret line="668" column="0" selection-start-line="668" selection-start-column="0" selection-end-line="668" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/HomePage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1360">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="620" max-vertical-offset="2142">
-          <caret line="45" column="36" selection-start-line="45" selection-start-column="36" selection-end-line="45" selection-end-column="36" />
-          <folding>
-            <element signature="e#1872#1873#0" expanded="true" />
-            <element signature="e#1896#1897#0" expanded="true" />
-            <element signature="e#3498#3499#0" expanded="true" />
-            <element signature="e#3530#3531#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2886,7 +2796,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="570" max-vertical-offset="9367">
           <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
           <folding>
-            <element signature="e#2675#2676#0" expanded="true" />
+            <element signature="e#2675#2676#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2920,7 +2830,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="17986">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#34866#0" expanded="true" />
+            <element signature="e#0#34866#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2930,8 +2840,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="111784" max-vertical-offset="127483">
           <caret line="6698" column="0" selection-start-line="6698" selection-start-column="0" selection-end-line="6698" selection-end-column="0" />
           <folding>
-            <element signature="e#185682#185683#0" expanded="true" />
-            <element signature="e#185721#185722#0" expanded="true" />
+            <element signature="e#185682#185683#0" expanded="false" />
+            <element signature="e#185721#185722#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2941,14 +2851,14 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="7030" max-vertical-offset="41854">
           <caret line="481" column="0" selection-start-line="481" selection-start-column="0" selection-end-line="481" selection-end-column="0" />
           <folding>
-            <element signature="e#14199#14200#0" expanded="true" />
-            <element signature="e#14249#14250#0" expanded="true" />
-            <element signature="e#14294#14295#0" expanded="true" />
-            <element signature="e#14341#14342#0" expanded="true" />
-            <element signature="e#21125#21126#0" expanded="true" />
-            <element signature="e#21173#21174#0" expanded="true" />
-            <element signature="e#23475#23476#0" expanded="true" />
-            <element signature="e#23504#23505#0" expanded="true" />
+            <element signature="e#14199#14200#0" expanded="false" />
+            <element signature="e#14249#14250#0" expanded="false" />
+            <element signature="e#14294#14295#0" expanded="false" />
+            <element signature="e#14341#14342#0" expanded="false" />
+            <element signature="e#21125#21126#0" expanded="false" />
+            <element signature="e#21173#21174#0" expanded="false" />
+            <element signature="e#23475#23476#0" expanded="false" />
+            <element signature="e#23504#23505#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2974,7 +2884,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
           <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding>
-            <element signature="e#833#834#0" expanded="true" />
+            <element signature="e#833#834#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2984,7 +2894,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="331" max-vertical-offset="867">
           <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
           <folding>
-            <element signature="e#2942#2943#0" expanded="true" />
+            <element signature="e#2942#2943#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3042,8 +2952,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="6809" max-vertical-offset="9214">
           <caret line="423" column="54" selection-start-line="423" selection-start-column="53" selection-end-line="423" selection-end-column="54" />
           <folding>
-            <element signature="e#13265#13266#0" expanded="true" />
-            <element signature="e#13297#13298#0" expanded="true" />
+            <element signature="e#13265#13266#0" expanded="false" />
+            <element signature="e#13297#13298#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3056,40 +2966,142 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/ChangePicture.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1216" max-vertical-offset="2159">
-          <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
-          <folding>
-            <element signature="e#3100#3691#0" expanded="true" />
-            <element signature="e#3672#3673#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/FriendsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1275">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/ProfileActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1734">
-          <caret line="38" column="61" selection-start-line="38" selection-start-column="61" selection-end-line="38" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4473684" vertical-offset="748" max-vertical-offset="1870">
-          <caret line="59" column="34" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
+        <state vertical-scroll-proportion="-18.88889" vertical-offset="748" max-vertical-offset="1870">
+          <caret line="74" column="42" selection-start-line="74" selection-start-column="42" selection-end-line="74" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/EndpointsAsyncTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="552" max-vertical-offset="1139">
+          <caret line="67" column="42" selection-start-line="67" selection-start-column="42" selection-end-line="67" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/EndpointsFriendTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="603" max-vertical-offset="1190">
+          <caret line="66" column="39" selection-start-line="66" selection-start-column="39" selection-end-line="66" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/EndpointsPasswordTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="542" max-vertical-offset="1139">
+          <caret line="66" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="71" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/example/Kyoukasuigetsu/mathconnect/backend/MyUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+          <caret line="24" column="70" selection-start-line="24" selection-start-column="70" selection-end-line="24" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="831" max-vertical-offset="1717">
+          <caret line="76" column="120" selection-start-line="76" selection-start-column="11" selection-end-line="76" selection-end-column="120" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/ChangePicture.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1086" max-vertical-offset="2108">
+          <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+          <folding>
+            <element signature="e#3158#3865#0" expanded="true" />
+            <element signature="e#3846#3847#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/example/Kyoukasuigetsu/mathconnect/backend/MyEndpoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="967" max-vertical-offset="2873">
+          <caret line="93" column="47" selection-start-line="93" selection-start-column="47" selection-end-line="93" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/EndpointsPictureTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="678" max-vertical-offset="1887">
+          <caret line="79" column="26" selection-start-line="79" selection-start-column="26" selection-end-line="79" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/HomePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1360">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="20" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/Drawing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1222" max-vertical-offset="1819">
+          <caret line="105" column="56" selection-start-line="105" selection-start-column="56" selection-end-line="105" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/ConnectActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1273" max-vertical-offset="3400">
+          <caret line="114" column="34" selection-start-line="114" selection-start-column="34" selection-end-line="114" selection-end-column="34" />
+          <folding>
+            <element signature="e#3564#3565#0" expanded="true" />
+            <element signature="e#3605#3606#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/ProfileActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="1853">
+          <caret line="55" column="30" selection-start-line="55" selection-start-column="30" selection-end-line="55" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_connect.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.481482" vertical-offset="4314" max-vertical-offset="4981">
+          <caret line="272" column="17" selection-start-line="272" selection-start-column="17" selection-end-line="272" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/FriendsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="474" max-vertical-offset="1275">
+          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/kyoukasuigetsu/mathconnect/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6130653" vertical-offset="926" max-vertical-offset="2227">
+          <caret line="82" column="48" selection-start-line="82" selection-start-column="48" selection-end-line="82" selection-end-column="48" />
           <folding />
         </state>
       </provider>

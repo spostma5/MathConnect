@@ -90,8 +90,8 @@ public class MyEndpoint {
             newUser.setProperty("email",user);
             newUser.setProperty("username",user.split("@")[0]);
             newUser.setProperty("password",pass);
-            newUser.setProperty("friends","null");
-            newUser.setProperty("profile_pic","null");
+            newUser.setProperty("friends","");
+            newUser.setProperty("profile_pic","");
 
         datastore.put(newUser);
 
@@ -119,6 +119,7 @@ public class MyEndpoint {
         response.setPassword(pass);
         response.setUsername(mEntity.getProperty("username").toString());
         response.setFriends(mEntity.getProperty("friends").toString());
+        response.setPicture(mEntity.getProperty("profile_pic").toString());
 
         return response;
     }
@@ -144,6 +145,33 @@ public class MyEndpoint {
         response.setPassword(mEntity.getProperty("password").toString());
         response.setUsername(mEntity.getProperty("username").toString());
         response.setFriends(friend);
+        response.setPicture(mEntity.getProperty("profile_pic").toString());
+
+        return response;
+    }
+
+    @ApiMethod(name = "setPicture")
+    public MyUser setPicture(@Named("user") String user,@Named("picture") String picture) {
+        MyUser response = new MyUser();
+
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+
+        Query.Filter mFilter = new Query.FilterPredicate("email", Query.FilterOperator.EQUAL,user);
+        Query mQuery = new Query("user")
+                .setFilter(mFilter);
+
+        Entity mEntity = datastore.prepare(mQuery)
+                .asSingleEntity();
+
+        mEntity.setProperty("profile_pic",picture);
+
+        datastore.put(mEntity);
+
+        response.setEmail(user);
+        response.setPassword(mEntity.getProperty("password").toString());
+        response.setUsername(mEntity.getProperty("username").toString());
+        response.setFriends(mEntity.getProperty("friends").toString());
+        response.setPicture(picture);
 
         return response;
     }

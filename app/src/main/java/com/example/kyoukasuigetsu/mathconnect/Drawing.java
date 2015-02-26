@@ -22,6 +22,8 @@ public class Drawing extends View {
     private Canvas drawCanvas;
     private Bitmap canvasBitmap;
 
+    int width,height;
+
     private final int THIN = 10, MEDIUM = 20, THICK = 30;
 
     public Drawing(Context context,AttributeSet attrs) {
@@ -48,6 +50,9 @@ public class Drawing extends View {
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        width = w;
+        height = h;
+
         super.onSizeChanged(w,h,oldw,oldh);
         canvasBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         drawCanvas = new Canvas(canvasBitmap);
@@ -95,5 +100,10 @@ public class Drawing extends View {
             drawPaint.setStrokeWidth(MEDIUM);
         else if(size.equalsIgnoreCase("  Thick  "))
             drawPaint.setStrokeWidth(THICK);
+    }
+
+    public void clearScreen() {
+        canvasBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        drawCanvas = new Canvas(canvasBitmap);
     }
 }

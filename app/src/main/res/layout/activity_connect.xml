@@ -61,7 +61,7 @@
         android:layout_alignRight="@+id/tableRow"
         android:layout_alignEnd="@+id/tableRow"
         android:background="#ff3c3c3c"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <Button
             style="?android:attr/buttonStyleSmall"
@@ -231,17 +231,17 @@
         android:visibility="gone"></GridLayout>
     <GridLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/connectGridLayout3"
         android:layout_below="@+id/tableRow"
         android:layout_alignRight="@+id/tableRow"
         android:layout_alignEnd="@+id/tableRow"
         android:background="#ff3c3c3c"
-        android:visibility="gone">
+        android:visibility="visible">
 
     </GridLayout>
     <GridLayout
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/connectGridLayout4"
         android:layout_below="@+id/tableRow"
@@ -252,18 +252,20 @@
 
         <Button
             style="@style/Text_Button"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Exit to Menu"
+            android:onClick="returnHome"
             android:id="@+id/button2"
             android:layout_row="0"
             android:layout_column="22" />
 
         <Button
             style="@style/Text_Button"
-            android:layout_width="66dp"
-            android:layout_height="fill_parent"
-            android:text="Exit App"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="clearScreen"
+            android:text="Clear Screen"
             android:id="@+id/button3"
             android:layout_row="1"
             android:layout_column="22" />

@@ -79,7 +79,12 @@ public class User implements Parcelable{
         String friendString = "";
 
         for(int i=0; i<friends.size();i++) {
-            friendString+=friends.get(i) + "=;=";
+            if(friends.get(i).endsWith("=")){
+                friendString+=friends.get(i) + ";=";
+            }
+            else
+                friendString+=friends.get(i) + "=;=";
+
         }
 
         dest.writeStringArray(new String[] {this.username,
@@ -118,7 +123,11 @@ public class User implements Parcelable{
         String response = "";
 
         for(int i = 0; i < friends.size(); i++) {
-            response += friends.get(i) + "=;=";
+            if(friends.get(i).endsWith("=")){
+                response += friends.get(i) + ";=";
+            }
+            else
+                response += friends.get(i) + "=;=";
         }
 
         return response;

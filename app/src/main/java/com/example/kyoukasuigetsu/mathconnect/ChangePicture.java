@@ -1,6 +1,7 @@
 package com.example.kyoukasuigetsu.mathconnect;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Base64;
+import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -100,7 +102,7 @@ public class ChangePicture extends ActionBarActivity {
 
                         user.setProfilePic(picture);
 
-                        gotoProfile();
+                        new EndpointsPictureTask().execute(new Pair<Context, String>(ChangePicture.this, user.getEmail() + ";=;" + user.getProfilePic()));
                     }
                 });
             }
@@ -132,10 +134,7 @@ public class ChangePicture extends ActionBarActivity {
     }
 
     public void gotoProfile() {
-        Intent intent = new Intent(this,ProfileActivity.class);
 
-        intent.putExtra(LoginActivity.USER,user);
-        startActivity(intent);
     }
 
     public void cancelClick(View view) {

@@ -40,12 +40,19 @@ public class ProfileActivity extends ActionBarActivity {
 
         try {
              String picture = user.getProfilePic();
+            if(user.getProfilePic().isEmpty()) {
+                Bitmap bm = BitmapFactory.decodeResource(getResources(),R.drawable.userblank);
 
-            byte[] decodedString = Base64.decode(picture,Base64.DEFAULT);
-            Bitmap selectedImage = BitmapFactory.decodeByteArray(decodedString,0,decodedString.length);
+                imageView.setImageBitmap(bm);
+                imageView.invalidate();
+            } else {
 
-            imageView.setImageBitmap(selectedImage);
-            imageView.invalidate();
+                byte[] decodedString = Base64.decode(picture, Base64.DEFAULT);
+                Bitmap selectedImage = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+
+                imageView.setImageBitmap(selectedImage);
+                imageView.invalidate();
+            }
         } catch(Exception e) {
             //DO NOTHING
         }
