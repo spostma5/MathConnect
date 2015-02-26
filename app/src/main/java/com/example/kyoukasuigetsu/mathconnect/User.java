@@ -29,13 +29,18 @@ public class User implements Parcelable{
         password = str.split(";=;")[1];
         email = str.split(";=;")[2];
         context = c;
-        profilePic = "";
+
+        try {
+            profilePic = str.split(";=;")[4];
+        } catch(Exception e) {
+            profilePic = "";
+        }
 
         friends = new ArrayList<String>();
         try {
             String frStr = str.split(";=;")[3];
-            for(int i = 0; i < frStr.split("=;=").length;i++) {
-                friends.add(frStr.split("=;=")[i]);
+            for(int i = 0; i < frStr.split("&&&").length;i++) {
+                friends.add(frStr.split("&&&")[i]);
             }
         } catch (Exception e) {
             //DO NOTHING
@@ -58,8 +63,8 @@ public class User implements Parcelable{
             //DO NOTHING
         }
         friends = new ArrayList<String>();
-        for(int i=0; i<data[3].split("=;=").length; i++) {
-            friends.add(data[3].split("=;=")[i]);
+        for(int i=0; i<data[3].split("&&&").length; i++) {
+            friends.add(data[3].split("&&&")[i]);
         }
 
         try {
@@ -79,11 +84,7 @@ public class User implements Parcelable{
         String friendString = "";
 
         for(int i=0; i<friends.size();i++) {
-            if(friends.get(i).endsWith("=")){
-                friendString+=friends.get(i) + ";=";
-            }
-            else
-                friendString+=friends.get(i) + "=;=";
+            friendString+=friends.get(i) + "&&&";
 
         }
 
@@ -123,11 +124,7 @@ public class User implements Parcelable{
         String response = "";
 
         for(int i = 0; i < friends.size(); i++) {
-            if(friends.get(i).endsWith("=")){
-                response += friends.get(i) + ";=";
-            }
-            else
-                response += friends.get(i) + "=;=";
+                response += friends.get(i) + "&&&";
         }
 
         return response;
@@ -137,9 +134,7 @@ public class User implements Parcelable{
         friends.add(friend);
     }
 
-    public void setProfilePic(String pic) {
-        profilePic = pic;
-    }
+    public void setProfilePic(String pic) { profilePic = pic; }
 
     public ArrayList<String> getFriends() {
         return friends;

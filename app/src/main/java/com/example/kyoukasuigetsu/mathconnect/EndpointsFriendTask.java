@@ -10,7 +10,11 @@ import com.example.kyoukasuigetsu.mathconnect.backend.myApi.MyApi;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.zip.GZIPInputStream;
 
 /**
  * Created by Kyoukasuigetsu on 21/02/2015.
@@ -60,6 +64,17 @@ class EndpointsFriendTask extends AsyncTask<Pair<Context, String>, Void, String>
     protected void onPostExecute(String result) {
         Toast.makeText(context, "Friend added", Toast.LENGTH_LONG).show();
 
+        String[] parts = result.split(";=;");
+
+
+        try {
+            parts[4] = decompress(parts[4]);
+        } catch (Exception e) {
+            //DO NOTHING
+        }
+
+        result = parts[0] + parts[1] + parts[2] + parts[3] + parts[4];
+
         User user = new User(result,context);
 
         try {
@@ -71,5 +86,21 @@ class EndpointsFriendTask extends AsyncTask<Pair<Context, String>, Void, String>
         Intent intent = new Intent(context,FriendsActivity.class);
         intent.putExtra(LoginActivity.USER,user);
         context.startActivity(intent);
+    }
+
+    public static String decompress(String str) throws IOException {
+        if (str == null || str.length() == 0) {
+            return str;
+        }
+        System.out.println("Input String length : " + str.length());
+        GZIPInputStream gis = new GZIPInputStream(new ByteArrayInputStream(str.getBytes("ISO-8859-1")));
+        BufferedReader bf = new BufferedReader(new InputStreamReader(gis, "ISO-8859-1"));
+        String outStr = "";
+        String line;
+        while ((line=bf.readLine())!=null) {
+            outStr += line;
+        }
+        System.out.println("Output String lenght : " + outStr.length());
+        return outStr;
     }
 }

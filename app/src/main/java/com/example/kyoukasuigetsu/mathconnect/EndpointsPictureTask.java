@@ -10,10 +10,11 @@ import com.example.kyoukasuigetsu.mathconnect.backend.myApi.MyApi;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.nio.ByteBuffer;
+import java.io.InputStreamReader;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
@@ -50,11 +51,14 @@ class EndpointsPictureTask extends AsyncTask<Pair<Context, String>, Void, String
         context = params[0].first;
         String user = params[0].second.split(";=;")[0];
         String pic = params[0].second.split(";=;")[1];
+
+
         try {
             pic = compress(pic).toString();
-        } catch(IOException e) {
+        } catch(Exception e) {
             //DO NOTHING
         }
+
 
         try {
             return myApiService.setPicture(user, pic).execute().getUser();
@@ -68,11 +72,15 @@ class EndpointsPictureTask extends AsyncTask<Pair<Context, String>, Void, String
         Toast.makeText(context, "Picture Changed", Toast.LENGTH_LONG).show();
 
         String[] parts = result.split(";=;");
+
+
         try {
-            parts[4] = decompress(parts[4].getBytes());
-        } catch (IOException e) {
+            parts[4] = decompress(parts[4]);
+        } catch (Exception e) {
             //DO NOTHING
         }
+
+        result = parts[0] + parts[1] + parts[2] + parts[3] + parts[4];
 
         User user = new User(result,context);
 
@@ -87,35 +95,33 @@ class EndpointsPictureTask extends AsyncTask<Pair<Context, String>, Void, String
         context.startActivity(intent);
     }
 
-    public static byte[] compress(String string) throws IOException {
-        byte[] blockcopy = ByteBuffer
-                .allocate(4)
-                .order(java.nio.ByteOrder.LITTLE_ENDIAN)
-                .putInt(string.length())
-                .array();
-        ByteArrayOutputStream os = new ByteArrayOutputStream(string.length());
-        GZIPOutputStream gos = new GZIPOutputStream(os);
-        gos.write(string.getBytes());
-        gos.close();
-        os.close();
-        byte[] compressed = new byte[4 + os.toByteArray().length];
-        System.arraycopy(blockcopy, 0, compressed, 0, 4);
-        System.arraycopy(os.toByteArray(), 0, compressed, 4, os.toByteArray().length);
-        return compressed;
+    public static String compress(String str) throws IOException {
+        if (str == null || str.length() == 0) {
+            return str;
+        }
+        System.out.println("String length : " + str.length());
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        GZIPOutputStream gzip = new GZIPOutputStream(out);
+        gzip.write(str.getBytes());
+        gzip.close();
+        String outStr = out.toString("ISO-8859-1");
+        System.out.println("Output String lenght : " + outStr.length());
+        return outStr;
     }
 
-    public static String decompress(byte[] compressed) throws IOException {
-        final int BUFFER_SIZE = 32;
-        ByteArrayInputStream is = new ByteArrayInputStream(compressed, 4, compressed.length - 4);
-        GZIPInputStream gis = new GZIPInputStream(is, BUFFER_SIZE);
-        StringBuilder string = new StringBuilder();
-        byte[] data = new byte[BUFFER_SIZE];
-        int bytesRead;
-        while ((bytesRead = gis.read(data)) != -1) {
-            string.append(new String(data, 0, bytesRead));
+    public static String decompress(String str) throws IOException {
+        if (str == null || str.length() == 0) {
+            return str;
         }
-        gis.close();
-        is.close();
-        return string.toString();
+        System.out.println("Input String length : " + str.length());
+        GZIPInputStream gis = new GZIPInputStream(new ByteArrayInputStream(str.getBytes("ISO-8859-1")));
+        BufferedReader bf = new BufferedReader(new InputStreamReader(gis, "ISO-8859-1"));
+        String outStr = "";
+        String line;
+        while ((line=bf.readLine())!=null) {
+            outStr += line;
+        }
+        System.out.println("Output String lenght : " + outStr.length());
+        return outStr;
     }
 }

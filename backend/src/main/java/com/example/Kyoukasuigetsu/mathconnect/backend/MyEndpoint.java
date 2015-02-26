@@ -58,6 +58,7 @@ public class MyEndpoint {
                 response.setPassword(pass);
                 response.setUsername(mEntity.getProperty("username").toString());
                 response.setFriends(mEntity.getProperty("friends").toString());
+                response.setPicture(mEntity.getProperty("profilepic").toString());
             }
             else if(user.equals(mEntity.getProperty("email"))) {
                 response.setUsername("VALID");
@@ -91,7 +92,7 @@ public class MyEndpoint {
             newUser.setProperty("username",user.split("@")[0]);
             newUser.setProperty("password",pass);
             newUser.setProperty("friends","");
-            newUser.setProperty("profile_pic","");
+            newUser.setProperty("profilepic","");
 
         datastore.put(newUser);
 
@@ -119,7 +120,7 @@ public class MyEndpoint {
         response.setPassword(pass);
         response.setUsername(mEntity.getProperty("username").toString());
         response.setFriends(mEntity.getProperty("friends").toString());
-        response.setPicture(mEntity.getProperty("profile_pic").toString());
+        response.setPicture(mEntity.getProperty("profilepic").toString());
 
         return response;
     }
@@ -145,7 +146,7 @@ public class MyEndpoint {
         response.setPassword(mEntity.getProperty("password").toString());
         response.setUsername(mEntity.getProperty("username").toString());
         response.setFriends(friend);
-        response.setPicture(mEntity.getProperty("profile_pic").toString());
+        response.setPicture(mEntity.getProperty("profilepic").toString());
 
         return response;
     }
@@ -163,7 +164,7 @@ public class MyEndpoint {
         Entity mEntity = datastore.prepare(mQuery)
                 .asSingleEntity();
 
-        mEntity.setProperty("profile_pic",picture);
+        mEntity.setProperty("profilepic",picture);
 
         datastore.put(mEntity);
 
