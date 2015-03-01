@@ -88,6 +88,14 @@ public class Drawing extends View {
         return true;
     }
 
+    public  boolean onTouchEventVar(Path newPath, Canvas newCanvas, Paint newPaint) {
+        newCanvas.drawPath(newPath, newPaint);
+        newPath.reset();
+
+        invalidate();
+        return true;
+    }
+
     public void setColour(int newColour) {
         colour = newColour;
         drawPaint.setColor(colour);
@@ -105,5 +113,9 @@ public class Drawing extends View {
     public void clearScreen() {
         canvasBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         drawCanvas = new Canvas(canvasBitmap);
+    }
+
+    public void drawFromVars(Path newPath, Canvas newCanvas, Paint newPaint) {
+        onTouchEventVar(newPath,newCanvas,newPaint);
     }
 }

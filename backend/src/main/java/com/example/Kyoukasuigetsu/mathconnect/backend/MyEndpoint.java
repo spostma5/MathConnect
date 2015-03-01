@@ -176,4 +176,23 @@ public class MyEndpoint {
 
         return response;
     }
+
+    @ApiMethod(name = "userCreateRoom")
+    public MyRoom userCreateRoom(@Named("user") String user,@Named("frieds") String friends) {
+        MyRoom response = new MyRoom();
+
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+
+        Key newKey = createKey("room", user);
+        Entity newRoom = new Entity(newKey);
+        newRoom.setProperty("room",user);
+        newRoom.setProperty("friends",friends);
+        newRoom.setProperty("paint","null");
+        newRoom.setProperty("path","null");
+        newRoom.setProperty("canvas","null");
+
+        datastore.put(newRoom);
+
+        return response;
+    }
 }

@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"c05bU6zpvXPOpQakG5gG3IOJh8Y/j3I98UKpdbHjcVYNhS2TTQCbOQA\"",
+ "etag": "\"c05bU6zpvXPOpQakG5gG3IOJh8Y/8JIqauFdnrRkz2uQDyielJjeOGs\"",
  "discoveryVersion": "v1",
  "id": "myApi:v2",
  "name": "myApi",
@@ -78,6 +78,33 @@
    "type": "object",
    "properties": {
     "data": {
+     "type": "string"
+    }
+   }
+  },
+  "MyRoom": {
+   "id": "MyRoom",
+   "type": "object",
+   "properties": {
+    "canvas": {
+     "type": "string"
+    },
+    "drawing": {
+     "type": "string"
+    },
+    "friends": {
+     "type": "string"
+    },
+    "paint": {
+     "type": "string"
+    },
+    "path": {
+     "type": "string"
+    },
+    "room": {
+     "type": "string"
+    },
+    "roomAll": {
      "type": "string"
     }
    }
@@ -178,6 +205,33 @@
    ],
    "response": {
     "$ref": "MyUser"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "userCreateRoom": {
+   "id": "myApi.userCreateRoom",
+   "path": "userCreateRoom/{user}/{frieds}",
+   "httpMethod": "POST",
+   "parameters": {
+    "frieds": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "user": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "user",
+    "frieds"
+   ],
+   "response": {
+    "$ref": "MyRoom"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
