@@ -1,6 +1,5 @@
 package com.example.kyoukasuigetsu.mathconnect;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
@@ -21,6 +20,8 @@ import android.widget.RelativeLayout;
 
 public class ConnectActivity extends ActionBarActivity {
 
+    public static final String ROOM = "ROOM";
+
     private ImageButton drawButton;
     private ImageButton shapeButton;
     private ImageButton mathButton;
@@ -33,7 +34,7 @@ public class ConnectActivity extends ActionBarActivity {
 
     private Drawing drawingView;
 
-    private User user;
+    private Room room;
 
     private Paint paint;
 
@@ -47,8 +48,9 @@ public class ConnectActivity extends ActionBarActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         this.setContentView(R.layout.activity_connect);
 
-        Bundle data = getIntent().getExtras();
-        user = (User) data.getParcelable(LoginActivity.USER);
+
+        room = new Room();
+        room.setName(this.getIntent().getStringExtra(ROOM));
 
         drawButton = (ImageButton)findViewById(R.id.drawButton);
         shapeButton = (ImageButton)findViewById(R.id.shapeButton);
@@ -106,9 +108,11 @@ public class ConnectActivity extends ActionBarActivity {
     }
 
     public void returnHome(View view) {
+        /*
         Intent intent = new Intent(this,HomePage.class);
         intent.putExtra(LoginActivity.USER,user);
         startActivity(intent);
+        */
     }
 
     public void clearScreen(View view) {

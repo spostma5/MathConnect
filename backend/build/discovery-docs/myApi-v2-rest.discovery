@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"c05bU6zpvXPOpQakG5gG3IOJh8Y/8JIqauFdnrRkz2uQDyielJjeOGs\"",
+ "etag": "\"c05bU6zpvXPOpQakG5gG3IOJh8Y/XKjBWKLcyZeRphtMtWeu_8c-TAc\"",
  "discoveryVersion": "v1",
  "id": "myApi:v2",
  "name": "myApi",
@@ -212,23 +212,50 @@
   },
   "userCreateRoom": {
    "id": "myApi.userCreateRoom",
-   "path": "userCreateRoom/{user}/{frieds}",
+   "path": "userCreateRoom/{room}/{friends}",
    "httpMethod": "POST",
    "parameters": {
-    "frieds": {
+    "friends": {
      "type": "string",
      "required": true,
      "location": "path"
     },
-    "user": {
+    "room": {
      "type": "string",
      "required": true,
      "location": "path"
     }
    },
    "parameterOrder": [
-    "user",
-    "frieds"
+    "room",
+    "friends"
+   ],
+   "response": {
+    "$ref": "MyRoom"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "userJoinRoom": {
+   "id": "myApi.userJoinRoom",
+   "path": "userJoinRoom/{room}/{friend}",
+   "httpMethod": "POST",
+   "parameters": {
+    "friend": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "room": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "room",
+    "friend"
    ],
    "response": {
     "$ref": "MyRoom"

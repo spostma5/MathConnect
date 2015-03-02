@@ -1,8 +1,10 @@
 package com.example.kyoukasuigetsu.mathconnect;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -69,8 +71,6 @@ public class FriendsActivity extends ActionBarActivity {
     }
 
     public void startConnect(View view) {
-        Intent intent = new Intent(this,ConnectActivity.class);
-        intent.putExtra(LoginActivity.USER,user);
-        startActivity(intent);
+        new EndpointsConnectTask().execute(new Pair<Context, String>(this, user.getEmail() + ";=;" + user.getFriendsString()));
     }
 }

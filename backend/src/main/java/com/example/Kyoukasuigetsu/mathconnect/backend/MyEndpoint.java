@@ -178,20 +178,50 @@ public class MyEndpoint {
     }
 
     @ApiMethod(name = "userCreateRoom")
-    public MyRoom userCreateRoom(@Named("user") String user,@Named("frieds") String friends) {
+    public MyRoom userCreateRoom(@Named("room") String room,@Named("friends") String friends) {
         MyRoom response = new MyRoom();
+        response.setRoom(room);
+        response.setFriends(friends);
 
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
-        Key newKey = createKey("room", user);
+        Key newKey = createKey("room", room);
         Entity newRoom = new Entity(newKey);
-        newRoom.setProperty("room",user);
+        newRoom.setProperty("room",room);
         newRoom.setProperty("friends",friends);
         newRoom.setProperty("paint","null");
         newRoom.setProperty("path","null");
         newRoom.setProperty("canvas","null");
 
         datastore.put(newRoom);
+
+        return response;
+    }
+
+    @ApiMethod(name = "userJoinRoom")
+    public MyRoom userJoinRoom(@Named("room") String room,@Named("friend") String friend) {
+        MyRoom response = new MyRoom();
+        response.setRoom(friend);
+
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+
+        Query.Filter mFilter = new Query.FilterPredicate("room", Query.FilterOperator.EQUAL,friend + "ROOM");
+        Query mQuery = new Query("room")
+                .setFilter(mFilter);
+
+        try {
+            Entity mEntity = datastore.prepare(mQuery)
+                    .asSingleEntity();
+
+            if(mEntity.getProperty("friends").toString().contains(room)) {
+                response.setFriends("VALID");
+            }
+            else {
+                response.setFriends("INVALID");
+            }
+        } catch(Exception e) {
+            response.setFriends("INVALIDCATCH");
+        }
 
         return response;
     }

@@ -16,7 +16,7 @@ public class MyRoom {
     }
 
     public String getRoomAll() {
-        String toReturn = room + ";=;" + friends + ";=;" + paint + ";=;" + path + ";=;" + canvas;
+        String toReturn = room + ";=;" + friends;
 
         return toReturn;
     }
