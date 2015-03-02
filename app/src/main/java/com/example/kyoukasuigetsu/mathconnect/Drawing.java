@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
+import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -21,13 +22,15 @@ public class Drawing extends View {
     private int colour;
     private Canvas drawCanvas;
     private Bitmap canvasBitmap;
+    private Room room;
 
     int width,height;
 
     private final int THIN = 10, MEDIUM = 20, THICK = 30;
 
-    public Drawing(Context context,AttributeSet attrs) {
+    public Drawing(Context context,AttributeSet attrs,Room newRoom) {
         super(context,attrs);
+        room = newRoom;
         setupDrawing();
     }
 
@@ -79,6 +82,9 @@ public class Drawing extends View {
             case MotionEvent.ACTION_UP:
                 drawCanvas.drawPath(drawPath, drawPaint);
                 drawPath.reset();
+
+                new EndpointsPostTask().execute(new Pair<Context, String>(null, room.getName() + ";=;" + drawPaint.toString() + ";=;"
+                                                                                + drawPath.toString() + ";=;" + drawCanvas.toString()));
                 break;
             default:
                 return false;

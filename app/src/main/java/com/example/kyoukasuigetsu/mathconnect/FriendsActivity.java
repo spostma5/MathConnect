@@ -8,6 +8,7 @@ import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -30,6 +31,13 @@ public class FriendsActivity extends ActionBarActivity {
                 this,
                 android.R.layout.simple_list_item_1,
                 user.getFriends() );
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                new EndpointsConnectToRoomTask().execute(new Pair<Context, String>(FriendsActivity.this, user.getEmail() + ";=;" + user.getFriends().get(position)));
+            }
+        });
 
         mListView.setAdapter(arrayAdapter);
     }

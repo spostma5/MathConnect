@@ -1,11 +1,13 @@
 package com.example.kyoukasuigetsu.mathconnect;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Pair;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +18,9 @@ import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class ConnectActivity extends ActionBarActivity {
@@ -48,7 +53,6 @@ public class ConnectActivity extends ActionBarActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         this.setContentView(R.layout.activity_connect);
 
-
         room = new Room();
         room.setName(this.getIntent().getStringExtra(ROOM));
 
@@ -78,6 +82,19 @@ public class ConnectActivity extends ActionBarActivity {
         paint.setStyle(Paint.Style.FILL);
 
         setButtonSizes();
+
+        Timer t = new Timer();
+
+        t.scheduleAtFixedRate(
+                new TimerTask()
+                {
+                    public void run()
+                    {
+                        new EndpointsGetTask().execute(new Pair<Context, String>(ConnectActivity.this, room.getName()));
+                    }
+                },
+                0,      // run first occurrence immediately
+                2000);  // run every three seconds
     }
 
     @Override

@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"c05bU6zpvXPOpQakG5gG3IOJh8Y/XKjBWKLcyZeRphtMtWeu_8c-TAc\"",
+ "etag": "\"c05bU6zpvXPOpQakG5gG3IOJh8Y/ILd1Vo2OVyrGmOqxsF6emEbMcXs\"",
  "discoveryVersion": "v1",
  "id": "myApi:v2",
  "name": "myApi",
@@ -237,6 +237,27 @@
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
+  "userGet": {
+   "id": "myApi.userGet",
+   "path": "userGet/{room}",
+   "httpMethod": "POST",
+   "parameters": {
+    "room": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "room"
+   ],
+   "response": {
+    "$ref": "MyRoom"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
   "userJoinRoom": {
    "id": "myApi.userJoinRoom",
    "path": "userJoinRoom/{room}/{friend}",
@@ -313,6 +334,45 @@
    ],
    "response": {
     "$ref": "MyUser"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "userPost": {
+   "id": "myApi.userPost",
+   "path": "userPost/{room}/{paint}/{path}/{canvas}",
+   "httpMethod": "POST",
+   "parameters": {
+    "canvas": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "paint": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "path": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    },
+    "room": {
+     "type": "string",
+     "required": true,
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "room",
+    "paint",
+    "path",
+    "canvas"
+   ],
+   "response": {
+    "$ref": "MyRoom"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"

@@ -225,4 +225,50 @@ public class MyEndpoint {
 
         return response;
     }
+
+    @ApiMethod(name = "userGet")
+    public MyRoom userGet(@Named("room") String room) {
+        MyRoom response = new MyRoom();
+        response.setRoom(room);
+
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+
+        Query.Filter mFilter = new Query.FilterPredicate("room", Query.FilterOperator.EQUAL,room + "ROOM");
+        Query mQuery = new Query("room")
+                .setFilter(mFilter);
+
+        try {
+            Entity mEntity = datastore.prepare(mQuery)
+                    .asSingleEntity();
+        } catch(Exception e) {
+            //DO NOTHING
+        }
+
+        return response;
+    }
+
+    @ApiMethod(name = "userPost")
+    public MyRoom userPost(@Named("room") String room,@Named("paint") String paint,@Named("path") String path,@Named("canvas") String canvas) {
+        MyRoom response = new MyRoom();
+        response.setRoom(room);
+
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+
+        Query.Filter mFilter = new Query.FilterPredicate("room", Query.FilterOperator.EQUAL,room + "ROOM");
+        Query mQuery = new Query("room")
+                .setFilter(mFilter);
+
+        try {
+            Entity mEntity = datastore.prepare(mQuery)
+                    .asSingleEntity();
+
+            mEntity.setProperty("paint",paint);
+            mEntity.setProperty("path",path);
+            mEntity.setProperty("canvas",canvas);
+        } catch(Exception e) {
+            //DO NOTHING
+        }
+
+        return response;
+    }
 }

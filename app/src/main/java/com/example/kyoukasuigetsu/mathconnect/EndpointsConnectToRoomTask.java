@@ -53,7 +53,7 @@ class EndpointsConnectToRoomTask extends AsyncTask<Pair<Context, String>, Void, 
         }
 
         try {
-            return myApiService.userJoinRoom(user + "ROOM",friend).execute().getRoomAll();
+            return myApiService.userJoinRoom(user,friend).execute().getRoomAll();
         } catch (IOException e) {
             return e.getMessage();
         }
@@ -61,21 +61,23 @@ class EndpointsConnectToRoomTask extends AsyncTask<Pair<Context, String>, Void, 
 
     @Override
     protected void onPostExecute(String result) {
-        Toast.makeText(context, "Connected", Toast.LENGTH_LONG).show();
-
         Room room = new Room(result,context);
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            //DO NOTHING
-        }
-
-
         if(result.split(";=;")[1].equals("VALID")) {
+            Toast.makeText(context, "Connected", Toast.LENGTH_LONG).show();
+
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                //DO NOTHING
+            }
+
             Intent intent = new Intent(context,ConnectActivity.class);
             intent.putExtra(ConnectActivity.ROOM,room.getName());
             context.startActivity(intent);
+        }
+        else {
+            Toast.makeText(context, "Room not found", Toast.LENGTH_LONG).show();
         }
     }
 }
