@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"c05bU6zpvXPOpQakG5gG3IOJh8Y/ILd1Vo2OVyrGmOqxsF6emEbMcXs\"",
+ "etag": "\"c05bU6zpvXPOpQakG5gG3IOJh8Y/WS-axC0-hVOg1q3v2Hqth1qJL_c\"",
  "discoveryVersion": "v1",
  "id": "myApi:v2",
  "name": "myApi",
@@ -86,16 +86,13 @@
    "id": "MyRoom",
    "type": "object",
    "properties": {
-    "canvas": {
+    "colour": {
      "type": "string"
     },
     "drawing": {
      "type": "string"
     },
     "friends": {
-     "type": "string"
-    },
-    "paint": {
      "type": "string"
     },
     "path": {
@@ -105,6 +102,9 @@
      "type": "string"
     },
     "roomAll": {
+     "type": "string"
+    },
+    "size": {
      "type": "string"
     }
    }

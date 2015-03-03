@@ -53,7 +53,7 @@ class EndpointsConnectTask extends AsyncTask<Pair<Context, String>, Void, String
         }
 
         try {
-            return myApiService.userCreateRoom(user + "ROOM",friends).execute().getRoomAll();
+            return myApiService.userCreateRoom(user,friends).execute().getRoomAll();
         } catch (IOException e) {
             return e.getMessage();
         }

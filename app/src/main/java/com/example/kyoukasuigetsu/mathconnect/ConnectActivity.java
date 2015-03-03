@@ -26,6 +26,7 @@ import java.util.TimerTask;
 public class ConnectActivity extends ActionBarActivity {
 
     public static final String ROOM = "ROOM";
+    public static final int TIME = 500;
 
     private ImageButton drawButton;
     private ImageButton shapeButton;
@@ -98,7 +99,7 @@ public class ConnectActivity extends ActionBarActivity {
                     }
                 },
                 0,      // run first occurrence immediately
-                2000);  // run every three seconds
+                TIME);  // time between runssam
     }
 
     @Override
@@ -239,6 +240,6 @@ public class ConnectActivity extends ActionBarActivity {
 
     public void drawFromGet(String data) {
         String[] parts = data.split(";=;");
-        drawingView.onTouchEventVar(parts[1],null,parts[0]);
+        drawingView.onTouchEventVar(parts[0],parts[1],parts[2]);
     }
 }

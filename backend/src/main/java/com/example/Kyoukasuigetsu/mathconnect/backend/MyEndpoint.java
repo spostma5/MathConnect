@@ -189,9 +189,9 @@ public class MyEndpoint {
         Entity newRoom = new Entity(newKey);
         newRoom.setProperty("room",room);
         newRoom.setProperty("friends",friends);
-        newRoom.setProperty("paint","null");
+        newRoom.setProperty("colour","null");
         newRoom.setProperty("path","null");
-        newRoom.setProperty("canvas","null");
+        newRoom.setProperty("size","null");
 
         datastore.put(newRoom);
 
@@ -205,7 +205,7 @@ public class MyEndpoint {
 
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
-        Query.Filter mFilter = new Query.FilterPredicate("room", Query.FilterOperator.EQUAL,friend + "ROOM");
+        Query.Filter mFilter = new Query.FilterPredicate("room", Query.FilterOperator.EQUAL,friend);
         Query mQuery = new Query("room")
                 .setFilter(mFilter);
 
@@ -233,7 +233,7 @@ public class MyEndpoint {
 
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
-        Query.Filter mFilter = new Query.FilterPredicate("room", Query.FilterOperator.EQUAL,room + "ROOM");
+        Query.Filter mFilter = new Query.FilterPredicate("room", Query.FilterOperator.EQUAL,room);
         Query mQuery = new Query("room")
                 .setFilter(mFilter);
 
@@ -241,8 +241,9 @@ public class MyEndpoint {
             Entity mEntity = datastore.prepare(mQuery)
                     .asSingleEntity();
 
-            response.setPaint(mEntity.getProperty("paint").toString());
+            response.setColour(mEntity.getProperty("colour").toString());
             response.setPath(mEntity.getProperty("path").toString());
+            response.setSize(mEntity.getProperty("size").toString());
         } catch(Exception e) {
             //DO NOTHING
         }
@@ -257,7 +258,7 @@ public class MyEndpoint {
 
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
-        Query.Filter mFilter = new Query.FilterPredicate("room", Query.FilterOperator.EQUAL,room + "ROOM");
+        Query.Filter mFilter = new Query.FilterPredicate("room", Query.FilterOperator.EQUAL,room);
         Query mQuery = new Query("room")
                 .setFilter(mFilter);
 
@@ -265,9 +266,9 @@ public class MyEndpoint {
             Entity mEntity = datastore.prepare(mQuery)
                     .asSingleEntity();
 
-            mEntity.setProperty("paint",paint);
+            mEntity.setProperty("colour",paint);
             mEntity.setProperty("path",path);
-            mEntity.setProperty("canvas",canvas);
+            mEntity.setProperty("size",canvas);
 
             datastore.put(mEntity);
         } catch(Exception e) {

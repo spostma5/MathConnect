@@ -5,7 +5,7 @@ package com.example.Kyoukasuigetsu.mathconnect.backend;
  */
 public class MyRoom {
 
-    private String room, friends, paint, path, canvas;
+    private String room, friends, colour, path, size;
 
     public String getRoom() {
         return room;
@@ -22,15 +22,15 @@ public class MyRoom {
     }
 
     public String getDrawing() {
-        return paint + ";=;" + path + ";=;" + canvas;
+        return colour + ";=;" + path + ";=;" + size;
     }
 
     public void setRoom(String newRoom) {
         room = newRoom;
     }
 
-    public void setPaint(String newPaint) {
-        paint = newPaint;
+    public void setColour(String newPaint) {
+        colour = newPaint;
     }
 
     public void setPath(String newPath) {
@@ -41,7 +41,7 @@ public class MyRoom {
         friends = newFriends;
     }
 
-    public void setCanvas(String newCanvas) {
-        canvas = newCanvas;
+    public void setSize(String newCanvas) {
+        size = newCanvas;
     }
 }
