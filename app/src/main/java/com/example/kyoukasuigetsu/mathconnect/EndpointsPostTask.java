@@ -44,7 +44,7 @@ class EndpointsPostTask extends AsyncTask<Pair<Context, String>, Void, String> {
         String[] data = params[0].second.split(";=;");
 
         try {
-           return myApiService.userPost(data[0],data[1],data[3],data[4]).execute().getDrawing();
+           return myApiService.userPost(data[0],data[1],data[2],data[3]).execute().getDrawing();
         } catch (IOException e) {
             return e.getMessage();
         }

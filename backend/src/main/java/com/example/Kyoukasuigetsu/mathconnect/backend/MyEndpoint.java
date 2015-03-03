@@ -240,6 +240,9 @@ public class MyEndpoint {
         try {
             Entity mEntity = datastore.prepare(mQuery)
                     .asSingleEntity();
+
+            response.setPaint(mEntity.getProperty("paint").toString());
+            response.setPath(mEntity.getProperty("path").toString());
         } catch(Exception e) {
             //DO NOTHING
         }
@@ -265,6 +268,8 @@ public class MyEndpoint {
             mEntity.setProperty("paint",paint);
             mEntity.setProperty("path",path);
             mEntity.setProperty("canvas",canvas);
+
+            datastore.put(mEntity);
         } catch(Exception e) {
             //DO NOTHING
         }

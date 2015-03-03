@@ -37,7 +37,9 @@ public class ConnectActivity extends ActionBarActivity {
     private GridLayout gridLayout3;
     private GridLayout gridLayout4;
 
-    private Drawing drawingView;
+    public static ConnectActivity connectActivity;
+
+    public Drawing drawingView;
 
     private Room room;
 
@@ -49,6 +51,7 @@ public class ConnectActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        connectActivity = this;
 
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         this.setContentView(R.layout.activity_connect);
@@ -73,6 +76,7 @@ public class ConnectActivity extends ActionBarActivity {
 
 
         drawingView = (Drawing)findViewById(R.id.drawingView);
+        drawingView.setRoom(room);
 
         colour = Color.BLACK;
 
@@ -231,5 +235,10 @@ public class ConnectActivity extends ActionBarActivity {
         Button button = (Button)view;
         String size =  button.getText().toString();
         drawingView.setSize(size);
+    }
+
+    public void drawFromGet(String data) {
+        String[] parts = data.split(";=;");
+        drawingView.onTouchEventVar(parts[1],null,parts[0]);
     }
 }

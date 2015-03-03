@@ -17,21 +17,27 @@ import android.view.View;
 
 public class Drawing extends View {
 
-    private Path drawPath;
-    private Paint drawPaint, canvasPaint;
+    private Path drawPath, gPath;
+    private Paint drawPaint, canvasPaint, gPaint;
     private int colour;
     private Canvas drawCanvas;
     private Bitmap canvasBitmap;
     private Room room;
+    private String points;
 
     int width,height;
 
     private final int THIN = 10, MEDIUM = 20, THICK = 30;
 
-    public Drawing(Context context,AttributeSet attrs,Room newRoom) {
+    public Drawing(Context context,AttributeSet attrs) {
         super(context,attrs);
-        room = newRoom;
+
+        points = "";
         setupDrawing();
+    }
+
+    public void setRoom(Room newRoom) {
+        room = newRoom;
     }
 
     private void setupDrawing() {
@@ -65,26 +71,34 @@ public class Drawing extends View {
     protected  void onDraw(Canvas canvas) {
         canvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
         canvas.drawPath(drawPath, drawPaint);
+        try{
+            canvas.drawPath(gPath,gPaint);
+        } catch(Exception e) {
+            //DO NOTHING
+        }
     }
 
     @Override
     public  boolean onTouchEvent(MotionEvent event) {
-        float touchX = event.getX();
-        float touchY = event.getY();
+        Float touchX = event.getX();
+        Float touchY = event.getY();
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 drawPath.moveTo(touchX, touchY);
+                points += touchX.toString() + "&&&" + touchY.toString() + "===";
                 break;
             case MotionEvent.ACTION_MOVE:
                 drawPath.lineTo(touchX, touchY);
+                points += touchX.toString() + "&&&" + touchY.toString() + "===";
                 break;
             case MotionEvent.ACTION_UP:
                 drawCanvas.drawPath(drawPath, drawPaint);
-                drawPath.reset();
 
-                new EndpointsPostTask().execute(new Pair<Context, String>(null, room.getName() + ";=;" + drawPaint.toString() + ";=;"
-                                                                                + drawPath.toString() + ";=;" + drawCanvas.toString()));
+                new EndpointsPostTask().execute(new Pair<Context, String>(null, room.getName() + ";=;" + drawPaint.getFlags() + ";=;"
+                        + points + ";=;" + "null"));
+                points = "";
+                drawPath.reset();
                 break;
             default:
                 return false;
@@ -94,11 +108,21 @@ public class Drawing extends View {
         return true;
     }
 
-    public  boolean onTouchEventVar(Path newPath, Canvas newCanvas, Paint newPaint) {
-        newCanvas.drawPath(newPath, newPaint);
-        newPath.reset();
+    public  boolean onTouchEventVar(String newPath, Canvas newCanvas, String newPaint) {
+        try {
+            gPaint = new Paint(Integer.parseInt(newPaint));
+            gPath = new Path();
 
-        invalidate();
+            String[] pairs = newPath.split("===");
+            gPath.moveTo(Float.parseFloat(pairs[0].split("&&&")[0]),Float.parseFloat(pairs[0].split("&&&")[1]));
+            for(int i = 1; i < pairs.length; i++) {
+                gPath.lineTo(Float.parseFloat(pairs[i].split("&&&")[0]),Float.parseFloat(pairs[i].split("&&&")[1]));
+            }
+
+            drawCanvas.drawPath(gPath, gPaint);
+        } catch(Exception e) {
+            //DO NOTHING
+        }
         return true;
     }
 
@@ -119,9 +143,5 @@ public class Drawing extends View {
     public void clearScreen() {
         canvasBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         drawCanvas = new Canvas(canvasBitmap);
-    }
-
-    public void drawFromVars(Path newPath, Canvas newCanvas, Paint newPaint) {
-        onTouchEventVar(newPath,newCanvas,newPaint);
     }
 }

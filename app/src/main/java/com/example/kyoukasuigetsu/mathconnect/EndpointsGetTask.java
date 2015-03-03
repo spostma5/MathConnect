@@ -52,6 +52,6 @@ class EndpointsGetTask extends AsyncTask<Pair<Context, String>, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-
+        ConnectActivity.connectActivity.drawFromGet(result);
     }
 }
