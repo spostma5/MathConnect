@@ -93,6 +93,12 @@ public class Drawing extends View {
         Float touchX = event.getX();
         Float touchY = event.getY();
 
+        if(points.length() > 500) {
+            new EndpointsPostTask().execute(new Pair<Context, String>(null, room.getName() + ";=;" + drawPaint.getColor() + ";=;"
+                    + points + ";=;" + drawPaint.getStrokeWidth()));
+            points = touchX.toString() + "&&&" + touchY.toString() + "===";
+        }
+
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 drawPath.moveTo(touchX, touchY);
@@ -103,7 +109,6 @@ public class Drawing extends View {
                 points += touchX.toString() + "&&&" + touchY.toString() + "===";
                 break;
             case MotionEvent.ACTION_UP:
-
                 new EndpointsPostTask().execute(new Pair<Context, String>(null, room.getName() + ";=;" + drawPaint.getColor() + ";=;"
                         + points + ";=;" + drawPaint.getStrokeWidth()));
                 points = "";
