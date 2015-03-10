@@ -73,7 +73,7 @@ class EndpointsFriendTask extends AsyncTask<Pair<Context, String>, Void, String>
             //DO NOTHING
         }
 
-        result = parts[0] + parts[1] + parts[2] + parts[3] + parts[4];
+        //result = parts[0] + parts[1] + parts[2] + parts[3] + parts[4];
 
         User user = new User(result,context);
 

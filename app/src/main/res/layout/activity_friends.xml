@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Invite a Friend"
+        android:text="Connect To Friend"
         android:id="@+id/textView5"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -42,7 +42,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Skip to Room"
+        android:text="Host Room"
         android:id="@+id/button17"
         style="@style/Text_Button"
         android:onClick="startConnect"

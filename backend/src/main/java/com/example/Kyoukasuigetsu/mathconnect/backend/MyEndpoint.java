@@ -145,7 +145,7 @@ public class MyEndpoint {
         response.setEmail(user);
         response.setPassword(mEntity.getProperty("password").toString());
         response.setUsername(mEntity.getProperty("username").toString());
-        response.setFriends(friend);
+        response.setFriends(mEntity.getProperty("friends").toString());
         response.setPicture(mEntity.getProperty("profilepic").toString());
 
         return response;

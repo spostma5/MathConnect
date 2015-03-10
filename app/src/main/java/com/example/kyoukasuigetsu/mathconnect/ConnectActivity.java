@@ -99,7 +99,7 @@ public class ConnectActivity extends ActionBarActivity {
                     }
                 },
                 0,      // run first occurrence immediately
-                TIME);  // time between runssam
+                TIME);  // time between runs
     }
 
     @Override
