@@ -1,6 +1,6 @@
 {
  "kind": "discovery#rpcDescription",
- "etag": "\"c05bU6zpvXPOpQakG5gG3IOJh8Y/WS-axC0-hVOg1q3v2Hqth1qJL_c\"",
+ "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/WS-axC0-hVOg1q3v2Hqth1qJL_c\"",
  "discoveryVersion": "v1",
  "id": "myApi:v2",
  "name": "myApi",

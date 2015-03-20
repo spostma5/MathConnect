@@ -188,7 +188,7 @@ public class MyEndpoint {
         Key newKey = createKey("room", room);
         Entity newRoom = new Entity(newKey);
         newRoom.setProperty("room",room);
-        newRoom.setProperty("friends",friends);
+        newRoom.setProperty("friends","null");
         newRoom.setProperty("colour","null");
         newRoom.setProperty("path","null");
         newRoom.setProperty("size","null");
@@ -202,26 +202,30 @@ public class MyEndpoint {
     public MyRoom userJoinRoom(@Named("room") String room,@Named("friend") String friend) {
         MyRoom response = new MyRoom();
         response.setRoom(friend);
+        response.setFriends(room);
 
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-
-        Query.Filter mFilter = new Query.FilterPredicate("room", Query.FilterOperator.EQUAL,friend);
+        Query.Filter mFilter = new Query.FilterPredicate("room", Query.FilterOperator.EQUAL,room);
         Query mQuery = new Query("room")
                 .setFilter(mFilter);
 
-        try {
-            Entity mEntity = datastore.prepare(mQuery)
-                    .asSingleEntity();
+        Entity mEntity = datastore.prepare(mQuery)
+                .asSingleEntity();
 
-            if(mEntity.getProperty("friends").toString().contains(room)) {
-                response.setFriends("VALID");
-            }
-            else {
-                response.setFriends("INVALID");
-            }
-        } catch(Exception e) {
-            response.setFriends("INVALIDCATCH");
-        }
+        mEntity.setProperty("friends",friend);
+
+        datastore.put(mEntity);
+
+        Key newKey = createKey("room", friend);
+        Entity newRoom = new Entity(newKey);
+        newRoom.setProperty("room",friend);
+        newRoom.setProperty("friends",room);
+        newRoom.setProperty("colour","null");
+        newRoom.setProperty("path","null");
+        newRoom.setProperty("size","null");
+
+        datastore.put(newRoom);
+
 
         return response;
     }
@@ -241,6 +245,7 @@ public class MyEndpoint {
             Entity mEntity = datastore.prepare(mQuery)
                     .asSingleEntity();
 
+            response.setFriends(mEntity.getProperty("friends").toString());
             response.setColour(mEntity.getProperty("colour").toString());
             response.setPath(mEntity.getProperty("path").toString());
             response.setSize(mEntity.getProperty("size").toString());

@@ -45,12 +45,6 @@ class EndpointsConnectTask extends AsyncTask<Pair<Context, String>, Void, String
         context = params[0].first;
         String user = params[0].second.split(";=;")[0];
         String friends = "null";
-        try {
-            friends = params[0].second.split(";=;")[1];
-        }
-        catch(Exception e) {
-        //DO NOTHING
-        }
 
         try {
             return myApiService.userCreateRoom(user,friends).execute().getRoomAll();
@@ -63,7 +57,7 @@ class EndpointsConnectTask extends AsyncTask<Pair<Context, String>, Void, String
     protected void onPostExecute(String result) {
         Toast.makeText(context, "Connected", Toast.LENGTH_LONG).show();
 
-        Room room = new Room(result,context);
+        Room room = new Room(result,"null",context);
 
         try {
             Thread.sleep(2000);
@@ -73,7 +67,7 @@ class EndpointsConnectTask extends AsyncTask<Pair<Context, String>, Void, String
 
 
         Intent intent = new Intent(context,ConnectActivity.class);
-        intent.putExtra(ConnectActivity.ROOM,room.getName());
+        intent.putExtra(ConnectActivity.ROOM,room.getRoom());
         context.startActivity(intent);
     }
 }

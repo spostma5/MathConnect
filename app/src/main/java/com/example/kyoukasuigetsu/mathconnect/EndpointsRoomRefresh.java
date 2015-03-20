@@ -1,10 +1,8 @@
 package com.example.kyoukasuigetsu.mathconnect;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Pair;
-import android.widget.Toast;
 
 import com.example.kyoukasuigetsu.mathconnect.backend.myApi.MyApi;
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -16,7 +14,7 @@ import java.io.IOException;
  * Created by Kyoukasuigetsu on 21/02/2015.
  */
 
-class EndpointsConnectToRoomTask extends AsyncTask<Pair<Context, String>, Void, String> {
+class EndpointsRoomRefresh extends AsyncTask<Pair<Context, String>, Void, String> {
     private static MyApi myApiService = null;
     private Context context;
 
@@ -43,17 +41,10 @@ class EndpointsConnectToRoomTask extends AsyncTask<Pair<Context, String>, Void, 
         }
 
         context = params[0].first;
-        String user = params[0].second.split(";=;")[0];
-        String friend = "null";
-        try {
-            friend = params[0].second.split(";=;")[1];
-        }
-        catch(Exception e) {
-            //DO NOTHING
-        }
+        String room = params[0].second;
 
         try {
-            return myApiService.userJoinRoom(user,friend).execute().getRoomAll();
+            return myApiService.userGet(room).execute().getRoomAll();
         } catch (IOException e) {
             return e.getMessage();
         }
@@ -61,23 +52,6 @@ class EndpointsConnectToRoomTask extends AsyncTask<Pair<Context, String>, Void, 
 
     @Override
     protected void onPostExecute(String result) {
-        Room room = new Room(result.split(";=;")[0],result.split(";=;")[1],context);
-
-        if(!result.split(";=;")[1].equals("INVALID")) {
-            Toast.makeText(context, "Connected", Toast.LENGTH_LONG).show();
-
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                //DO NOTHING
-            }
-
-            Intent intent = new Intent(context,ConnectActivity.class);
-            intent.putExtra(ConnectActivity.ROOM,room.getRoomRev());
-            context.startActivity(intent);
-        }
-        else {
-            Toast.makeText(context, "Room not found", Toast.LENGTH_LONG).show();
-        }
+        ConnectActivity.connectActivity.setRoom(result);
     }
 }

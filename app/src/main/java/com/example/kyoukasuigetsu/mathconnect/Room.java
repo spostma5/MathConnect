@@ -15,11 +15,15 @@ public class Room{
     private Paint paint;
     private Canvas canvas;
     private Path path;
+    private String friend;
     private ArrayList<String> friends;
     private Context context;
 
     public String getName() { return roomName; }
+    public String getRoom() { return roomName + ";=;" + friend; }
+    public String getRoomRev() { return friend + ";=;" + roomName; }
     public void setName(String newName) {roomName = newName;}
+    public String getFriend() { return friend; }
 
     public Room() {
         roomName = "";
@@ -29,12 +33,13 @@ public class Room{
         friends = new ArrayList<String>();
     }
 
-    public Room(String room, Context newContext) {
+    public Room(String room, String f, Context newContext) {
         roomName = room.split(";=;")[0];
         paint = new Paint();
         canvas = new Canvas();
         path = new Path();
         friends = new ArrayList<String>();
+        friend = f;
 
         try {
             String friend = room.split(";=;")[1];

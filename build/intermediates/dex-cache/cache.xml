@@ -2,18 +2,18 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Kyoukasuigetsu\AndroidStudioProjects\MathConnect\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="C:\Users\Kyoukasuigetsu\AndroidStudioProjects\MathConnect\app\build\intermediates\pre-dexed\debug\classes-13372203a7b22137e55225e66f3c010554030ed5.jar" />
-    </item>
-    <item
         jar="C:\Users\Kyoukasuigetsu\AndroidStudioProjects\MathConnect\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
         <dex dex="C:\Users\Kyoukasuigetsu\AndroidStudioProjects\MathConnect\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-ee721dec422f1233ebb6f4c0cbeee0c77cb78f43.jar" />
+    </item>
+    <item
+        jar="C:\Users\Kyoukasuigetsu\AndroidStudioProjects\MathConnect\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="C:\Users\Kyoukasuigetsu\AndroidStudioProjects\MathConnect\app\build\intermediates\pre-dexed\debug\classes-13372203a7b22137e55225e66f3c010554030ed5.jar" />
     </item>
     <item
         jar="C:\Users\Kyoukasuigetsu\.gradle\caches\modules-2\files-2.1\com.google.http-client\google-http-client-android\1.19.0\e3f11020c2c812112803d252d1392872d3f619c8\google-http-client-android-1.19.0.jar"
@@ -40,15 +40,8 @@
         jar="C:\Users\Kyoukasuigetsu\AndroidStudioProjects\MathConnect\backend\build\libs\backend-android-endpoints.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="a04c2b47841dae39ed230184ed9969ca09581638">
+        sha1="c93eb5a0979fbdad896fb1bd56c6915ec704be4f">
         <dex dex="C:\Users\Kyoukasuigetsu\AndroidStudioProjects\MathConnect\app\build\intermediates\pre-dexed\debug\backend-android-endpoints-87012d9c1fff88a678f1b5ccc8284c54ae80da4a.jar" />
-    </item>
-    <item
-        jar="C:\Users\Kyoukasuigetsu\.gradle\caches\modules-2\files-2.1\com.google.oauth-client\google-oauth-client\1.19.0\d473a8962e14a707a3716637e4898bb2dd9643f2\google-oauth-client-1.19.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="d473a8962e14a707a3716637e4898bb2dd9643f2">
-        <dex dex="C:\Users\Kyoukasuigetsu\AndroidStudioProjects\MathConnect\app\build\intermediates\pre-dexed\debug\google-oauth-client-1.19.0-09596a55ae676f9d89b4b6fa98c87455ed7c256f.jar" />
     </item>
     <item
         jar="C:\Users\Kyoukasuigetsu\.gradle\caches\modules-2\files-2.1\com.google.http-client\google-http-client\1.19.0\cdca49ad0977c040f603478aa2e16b2775c8fec6\google-http-client-1.19.0.jar"
@@ -58,6 +51,13 @@
         <dex dex="C:\Users\Kyoukasuigetsu\AndroidStudioProjects\MathConnect\app\build\intermediates\pre-dexed\debug\google-http-client-1.19.0-2e1cc676f56b2ed3be7f1efef72a2117b683bbba.jar" />
     </item>
     <item
+        jar="C:\Users\Kyoukasuigetsu\.gradle\caches\modules-2\files-2.1\com.google.oauth-client\google-oauth-client\1.19.0\d473a8962e14a707a3716637e4898bb2dd9643f2\google-oauth-client-1.19.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d473a8962e14a707a3716637e4898bb2dd9643f2">
+        <dex dex="C:\Users\Kyoukasuigetsu\AndroidStudioProjects\MathConnect\app\build\intermediates\pre-dexed\debug\google-oauth-client-1.19.0-09596a55ae676f9d89b4b6fa98c87455ed7c256f.jar" />
+    </item>
+    <item
         jar="C:\Users\Kyoukasuigetsu\.gradle\caches\modules-2\files-2.1\com.google.api-client\google-api-client-android\1.19.0\ba2aafb867f6af469f936ae76426cf0a280094bd\google-api-client-android-1.19.0.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -65,18 +65,18 @@
         <dex dex="C:\Users\Kyoukasuigetsu\AndroidStudioProjects\MathConnect\app\build\intermediates\pre-dexed\debug\google-api-client-android-1.19.0-c2331463a35a1b6424cd3a190d4df0bebd2307c3.jar" />
     </item>
     <item
-        jar="C:\Users\Kyoukasuigetsu\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="C:\Users\Kyoukasuigetsu\AndroidStudioProjects\MathConnect\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-d222fecd9cf813afcf82bf066ef0b3cc959b4f6b.jar" />
-    </item>
-    <item
         jar="C:\Users\Kyoukasuigetsu\.gradle\caches\modules-2\files-2.1\com.google.guava\guava-jdk5\13.0\381ae6c8add7c98e9bcddb1e0b898400cd6fc3f7\guava-jdk5-13.0.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="381ae6c8add7c98e9bcddb1e0b898400cd6fc3f7">
         <dex dex="C:\Users\Kyoukasuigetsu\AndroidStudioProjects\MathConnect\app\build\intermediates\pre-dexed\debug\guava-jdk5-13.0-cfa4cb5ba67786d7b0526971283f14cab49df478.jar" />
+    </item>
+    <item
+        jar="C:\Users\Kyoukasuigetsu\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="C:\Users\Kyoukasuigetsu\AndroidStudioProjects\MathConnect\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-d222fecd9cf813afcf82bf066ef0b3cc959b4f6b.jar" />
     </item>
     <item
         jar="C:\Users\Kyoukasuigetsu\.gradle\caches\modules-2\files-2.1\com.google.api-client\google-api-client\1.19.0\6a21277d9bebe267b7ddee028b241eebc756c040\google-api-client-1.19.0.jar"

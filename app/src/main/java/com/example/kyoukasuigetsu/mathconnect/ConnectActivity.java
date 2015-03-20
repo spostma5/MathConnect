@@ -57,8 +57,7 @@ public class ConnectActivity extends ActionBarActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         this.setContentView(R.layout.activity_connect);
 
-        room = new Room();
-        room.setName(this.getIntent().getStringExtra(ROOM));
+        room = new Room(this.getIntent().getStringExtra(ROOM).split(";=;")[0],this.getIntent().getStringExtra(ROOM).split(";=;")[1],null);
 
         drawButton = (ImageButton)findViewById(R.id.drawButton);
         shapeButton = (ImageButton)findViewById(R.id.shapeButton);
@@ -95,11 +94,19 @@ public class ConnectActivity extends ActionBarActivity {
                 {
                     public void run()
                     {
-                        new EndpointsGetTask().execute(new Pair<Context, String>(ConnectActivity.this, room.getName()));
+                        if(!room.getFriend().equals("null"))
+                            new EndpointsGetTask().execute(new Pair<Context, String>(ConnectActivity.this, room.getName()));
+                        else
+                            new EndpointsRoomRefresh().execute(new Pair<Context, String>(ConnectActivity.this, room.getName()));
                     }
                 },
-                0,      // run first occurrence immediately
+                500,      // run first occurrence immediately
                 TIME);  // time between runs
+    }
+
+    public void setRoom(String result) {
+        room = new Room(result.split(";=;")[0],result.split(";=;")[1], this);
+        drawingView.setRoom(room);
     }
 
     @Override
