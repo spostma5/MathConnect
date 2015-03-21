@@ -76,6 +76,29 @@ public class MyEndpoint {
         return response;
     }
 
+    @ApiMethod(name = "goHome")
+    public MyUser goHome(@Named("user") String user) {
+        MyUser response = new MyUser();
+
+
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+
+        Query.Filter mFilter = new Query.FilterPredicate("email", Query.FilterOperator.EQUAL,user);
+        Query mQuery = new Query("user")
+                .setFilter(mFilter);
+
+        Entity mEntity = datastore.prepare(mQuery)
+                .asSingleEntity();
+
+        response.setEmail(user);
+        response.setPassword(mEntity.getProperty("password").toString());
+        response.setUsername(mEntity.getProperty("username").toString());
+        response.setFriends(mEntity.getProperty("friends").toString());
+        response.setPicture(mEntity.getProperty("profilepic").toString());
+
+        return response;
+    }
+
     @ApiMethod(name = "userRegister")
     public MyUser register(@Named("user") String user,@Named("pass") String pass) {
         MyUser response = new MyUser();
@@ -274,6 +297,49 @@ public class MyEndpoint {
             mEntity.setProperty("colour",paint);
             mEntity.setProperty("path",path);
             mEntity.setProperty("size",canvas);
+
+            datastore.put(mEntity);
+        } catch(Exception e) {
+            //DO NOTHING
+        }
+
+        return response;
+    }
+    @ApiMethod(name = "clearScreen")
+    public MyRoom clearScreen(@Named("room") String room,@Named("friend") String friend) {
+        MyRoom response = new MyRoom();
+        response.setRoom(room);
+
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+
+        Query.Filter mFilter = new Query.FilterPredicate("room", Query.FilterOperator.EQUAL,room);
+        Query mQuery = new Query("room")
+                .setFilter(mFilter);
+
+        try {
+            Entity mEntity = datastore.prepare(mQuery)
+                    .asSingleEntity();
+
+            mEntity.setProperty("colour","null");
+            mEntity.setProperty("path","null");
+            mEntity.setProperty("size","null");
+
+            datastore.put(mEntity);
+        } catch(Exception e) {
+            //DO NOTHING
+        }
+
+        mFilter = new Query.FilterPredicate("room", Query.FilterOperator.EQUAL,friend);
+        mQuery = new Query("room")
+                .setFilter(mFilter);
+
+        try {
+            Entity mEntity = datastore.prepare(mQuery)
+                    .asSingleEntity();
+
+            mEntity.setProperty("colour","null");
+            mEntity.setProperty("path","null");
+            mEntity.setProperty("size","null");
 
             datastore.put(mEntity);
         } catch(Exception e) {

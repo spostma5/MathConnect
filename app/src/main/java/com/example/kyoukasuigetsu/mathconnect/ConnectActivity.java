@@ -19,8 +19,14 @@ import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.Vector;
+import java.util.zip.GZIPInputStream;
 
 
 public class ConnectActivity extends ActionBarActivity {
@@ -38,9 +44,11 @@ public class ConnectActivity extends ActionBarActivity {
     private GridLayout gridLayout3;
     private GridLayout gridLayout4;
 
+    public int ind = 0;
+
     public static ConnectActivity connectActivity;
 
-    public Drawing drawingView;
+    public Vector<Drawing> drawingView;
 
     private Room room;
 
@@ -74,9 +82,10 @@ public class ConnectActivity extends ActionBarActivity {
         gridLayout3.setVisibility(View.INVISIBLE);
         gridLayout4.setVisibility(View.INVISIBLE);
 
-
-        drawingView = (Drawing)findViewById(R.id.drawingView);
-        drawingView.setRoom(room);
+        drawingView = new Vector<Drawing>();
+        Drawing newDraw = (Drawing)findViewById(R.id.drawingView);
+        drawingView.add(newDraw);
+        drawingView.get(0).setRoom(room);
 
         colour = Color.BLACK;
 
@@ -106,7 +115,7 @@ public class ConnectActivity extends ActionBarActivity {
 
     public void setRoom(String result) {
         room = new Room(result.split(";=;")[0],result.split(";=;")[1], this);
-        drawingView.setRoom(room);
+        drawingView.get(ind).setRoom(room);
     }
 
     @Override
@@ -137,15 +146,12 @@ public class ConnectActivity extends ActionBarActivity {
     }
 
     public void returnHome(View view) {
-        /*
-        Intent intent = new Intent(this,HomePage.class);
-        intent.putExtra(LoginActivity.USER,user);
-        startActivity(intent);
-        */
+        new EndpointsGoHome().execute(new Pair<Context, String>(ConnectActivity.this, room.getName()));
     }
 
     public void clearScreen(View view) {
-        drawingView.clearScreen();
+        new EndpointsClearScreen().execute(new Pair<Context, String>(ConnectActivity.this, room.getName() + ";=;" + room.getFriend()));
+        drawingView.get(ind).clearScreen();
     }
 
     private void setButtonSizes() {
@@ -225,28 +231,46 @@ public class ConnectActivity extends ActionBarActivity {
     }
 
     public void hideDrawing() {
-        drawingView.setVisibility(View.INVISIBLE);
+        drawingView.get(ind).setVisibility(View.INVISIBLE);
     }
 
     public void showDrawing() {
-        drawingView.setVisibility(View.VISIBLE);
+        drawingView.get(ind).setVisibility(View.VISIBLE);
     }
 
     public void toggleColour(View view) {
         Button button = (Button)view;
         ColorDrawable mdraw = (ColorDrawable)button.getBackground();
         colour = mdraw.getColor();
-        drawingView.setColour(colour);
+        drawingView.get(ind).setColour(colour);
     }
 
     public void toggleSize(View view) {
         Button button = (Button)view;
         String size =  button.getText().toString();
-        drawingView.setSize(size);
+        drawingView.get(ind).setSize(size);
     }
 
-    public void drawFromGet(String data) {
+    public void drawFromGet(String data) throws IOException{
         String[] parts = data.split(";=;");
-        drawingView.onTouchEventVar(parts[0],parts[1],parts[2]);
+        String paths = decompress(parts[1]);
+        drawingView.get(ind).onTouchEventVar(parts[0],paths,parts[2]);
+    }
+
+
+    public static String decompress(String str) throws IOException {
+        if (str == null || str.length() == 0) {
+            return str;
+        }
+        System.out.println("Input String length : " + str.length());
+        GZIPInputStream gis = new GZIPInputStream(new ByteArrayInputStream(str.getBytes("ISO-8859-1")));
+        BufferedReader bf = new BufferedReader(new InputStreamReader(gis, "ISO-8859-1"));
+        String outStr = "";
+        String line;
+        while ((line=bf.readLine())!=null) {
+            outStr += line;
+        }
+        System.out.println("Output String lenght : " + outStr.length());
+        return outStr;
     }
 }

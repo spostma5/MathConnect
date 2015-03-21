@@ -1,6 +1,6 @@
 {
  "kind": "discovery#rpcDescription",
- "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/WS-axC0-hVOg1q3v2Hqth1qJL_c\"",
+ "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/TgSrrixYj7feRrnEp8nu69DTv4c\"",
  "discoveryVersion": "v1",
  "id": "myApi:v2",
  "name": "myApi",
@@ -148,6 +148,47 @@
    "parameterOrder": [
     "user",
     "friend"
+   ],
+   "returns": {
+    "$ref": "MyUser"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "myApi.clearScreen": {
+   "id": "myApi.clearScreen",
+   "parameters": {
+    "friend": {
+     "type": "string",
+     "required": true
+    },
+    "room": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "room",
+    "friend"
+   ],
+   "returns": {
+    "$ref": "MyRoom"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "myApi.goHome": {
+   "id": "myApi.goHome",
+   "parameters": {
+    "user": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "user"
    ],
    "returns": {
     "$ref": "MyUser"

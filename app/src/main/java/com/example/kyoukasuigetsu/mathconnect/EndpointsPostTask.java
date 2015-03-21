@@ -8,7 +8,9 @@ import com.example.kyoukasuigetsu.mathconnect.backend.myApi.MyApi;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.zip.GZIPOutputStream;
 
 /**
  * Created by Kyoukasuigetsu on 21/02/2015.
@@ -44,7 +46,7 @@ class EndpointsPostTask extends AsyncTask<Pair<Context, String>, Void, String> {
         String[] data = params[0].second.split(";=;");
 
         try {
-           return myApiService.userPost(data[0],data[1],data[2],data[3]).execute().getDrawing();
+           return myApiService.userPost(data[0],data[1],compress(data[2]),data[3]).execute().getDrawing();
         } catch (IOException e) {
             return e.getMessage();
         }
@@ -53,5 +55,19 @@ class EndpointsPostTask extends AsyncTask<Pair<Context, String>, Void, String> {
     @Override
     protected void onPostExecute(String result) {
         //DO NOTHING
+    }
+
+    public static String compress(String str) throws IOException {
+        if (str == null || str.length() == 0) {
+            return str;
+        }
+        System.out.println("String length : " + str.length());
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        GZIPOutputStream gzip = new GZIPOutputStream(out);
+        gzip.write(str.getBytes());
+        gzip.close();
+        String outStr = out.toString("ISO-8859-1");
+        System.out.println("Output String lenght : " + outStr.length());
+        return outStr;
     }
 }
