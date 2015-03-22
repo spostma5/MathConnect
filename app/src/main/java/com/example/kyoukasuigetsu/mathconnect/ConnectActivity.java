@@ -40,6 +40,7 @@ public class ConnectActivity extends ActionBarActivity {
     private ImageButton settingsButton;
 
     private RelativeLayout gridLayout;
+    private RelativeLayout relativeLayout;
     private GridLayout gridLayout2;
     private GridLayout gridLayout3;
     private GridLayout gridLayout4;
@@ -53,6 +54,8 @@ public class ConnectActivity extends ActionBarActivity {
     private Room room;
 
     private Paint paint;
+
+    String oldPath = "";
 
     private int colour;
 
@@ -73,6 +76,7 @@ public class ConnectActivity extends ActionBarActivity {
         settingsButton = (ImageButton)findViewById(R.id.settingsButton);
 
         gridLayout = (RelativeLayout)findViewById(R.id.connectGridLayout);
+        relativeLayout = (RelativeLayout)findViewById(R.id.RLConnect);
         gridLayout2 = (GridLayout)findViewById(R.id.connectGridLayout2);
         gridLayout3 = (GridLayout)findViewById(R.id.connectGridLayout3);
         gridLayout4 = (GridLayout)findViewById(R.id.connectGridLayout4);
@@ -253,8 +257,49 @@ public class ConnectActivity extends ActionBarActivity {
 
     public void drawFromGet(String data) throws IOException{
         String[] parts = data.split(";=;");
-        String paths = decompress(parts[1]);
-        drawingView.get(ind).onTouchEventVar(parts[0],paths,parts[2]);
+        String paths = parts[1];
+        if(oldPath.equals(paths)) {
+            //DO NOTHING
+        }
+        else {
+            oldPath = paths;
+            if(paths.equals("CLS")) {
+                new EndpointsPostRaw().execute(new Pair<Context, String>(null, room.getName() + ";=;" + "null" + ";=;"
+                        + "null" + ";=;" + "null"));
+
+                drawingView.get(ind).clearScreen();
+                drawingView.get(ind).invalidate();
+                oldPath = "null";
+            }
+            else if(paths.equals("ADD")) {
+                addPageRep();
+
+                new EndpointsPostRaw().execute(new Pair<Context, String>(null, room.getName() + ";=;" + "null" + ";=;"
+                        + "null" + ";=;" + "null"));
+
+                oldPath = "null";
+            }
+            else if(paths.equals("NEXT")) {
+                nextPageRep();
+
+                new EndpointsPostRaw().execute(new Pair<Context, String>(null, room.getName() + ";=;" + "null" + ";=;"
+                        + "null" + ";=;" + "null"));
+
+                oldPath = "null";
+            }
+            else if(paths.equals("Prev")) {
+                prevPageRep();
+
+                new EndpointsPostRaw().execute(new Pair<Context, String>(null, room.getName() + ";=;" + "null" + ";=;"
+                        + "null" + ";=;" + "null"));
+
+                oldPath = "null";
+            }
+            else {
+                paths = decompress(parts[1]);
+                drawingView.get(ind).onTouchEventVar(parts[0], paths, parts[2]);
+            }
+        }
     }
 
 
@@ -272,5 +317,51 @@ public class ConnectActivity extends ActionBarActivity {
         }
         System.out.println("Output String lenght : " + outStr.length());
         return outStr;
+    }
+
+    public void addPage(View view) {
+        Drawing newDrawing = new Drawing(this,drawingView.get(ind).getAttribs());
+        relativeLayout.addView(newDrawing, 0, new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
+        drawingView.add(newDrawing);
+
+        new EndpointsPostRaw().execute(new Pair<Context, String>(null, room.getFriend() + ";=;" + "null" + ";=;"
+                + "ADD" + ";=;" + "null"));
+
+        setPage(ind+1);
+    }
+
+    public void nextPage(View view) {
+        new EndpointsPostRaw().execute(new Pair<Context, String>(null, room.getFriend() + ";=;" + "null" + ";=;"
+                + "NEXT" + ";=;" + "null"));
+
+        setPage(ind+1);
+    }
+
+    public void prevPage(View view) {
+        new EndpointsPostRaw().execute(new Pair<Context, String>(null, room.getFriend() + ";=;" + "null" + ";=;"
+                + "PREV" + ";=;" + "null"));
+
+        setPage(ind-1);
+    }
+
+    public void addPageRep() {
+        Drawing newDrawing = new Drawing(this,drawingView.get(ind).getAttribs());
+        relativeLayout.addView(newDrawing, 0, new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
+        drawingView.add(newDrawing);
+
+        setPage(ind+1);
+    }
+
+    public void nextPageRep() {
+        setPage(ind+1);
+    }
+
+    public void prevPageRep() {
+        setPage(ind-1);
+    }
+
+    public void setPage(int index) {
+        drawingView.get(ind).setVisibility(View.GONE);
+        ind = index;
     }
 }

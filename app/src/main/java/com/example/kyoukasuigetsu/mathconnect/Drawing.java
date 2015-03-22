@@ -24,6 +24,7 @@ public class Drawing extends View {
     private Bitmap canvasBitmap;
     private Room room;
     private String points, oldPoints;
+    private AttributeSet attributes;
 
     int width,height;
 
@@ -32,10 +33,14 @@ public class Drawing extends View {
     public Drawing(Context context,AttributeSet attrs) {
         super(context,attrs);
 
+        attributes = attrs;
+
         oldPoints = "";
         points = "";
         setupDrawing();
     }
+
+    public AttributeSet getAttribs() { return attributes; }
 
     public void setRoom(Room newRoom) {
         room = newRoom;

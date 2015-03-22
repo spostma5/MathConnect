@@ -338,7 +338,7 @@ public class MyEndpoint {
                     .asSingleEntity();
 
             mEntity.setProperty("colour","null");
-            mEntity.setProperty("path","null");
+            mEntity.setProperty("path","CLS");
             mEntity.setProperty("size","null");
 
             datastore.put(mEntity);
