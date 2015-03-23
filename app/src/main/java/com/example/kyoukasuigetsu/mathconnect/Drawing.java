@@ -148,6 +148,54 @@ public class Drawing extends View {
             }
 
         }
+        else if (shapeMode == 2) {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    start = new PointF(touchX,touchY);
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    //DO NOTHING
+                    break;
+                case MotionEvent.ACTION_UP:
+                    finish = new PointF(touchX,touchY);
+                    double x = finish.x - start.x;
+                    double y = finish.y - start.y;
+                    double rad = Math.pow(x,2) + Math.pow(y,2);
+                    rad = Math.sqrt(rad);
+                    float radF = (float)rad;
+
+                    drawCanvas.drawCircle(start.x,start.y,radF,drawPaint);
+                    new EndpointsPostRaw().execute(new Pair<Context, String>(null, room.getFriend() + ";=;" + drawPaint.getColor() + ";=;"
+                            + "CIRCLE:" + start.x + ":" + start.y + ":" + radF + ";=;" + drawPaint.getStrokeWidth()));
+                    invalidate();
+                    shapeMode = 0;
+                    break;
+                default:
+                    return false;
+            }
+        }
+        else if (shapeMode == 3) {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    start = new PointF(touchX,touchY);
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    //DO NOTHING
+                    break;
+                case MotionEvent.ACTION_UP:
+                    finish = new PointF(touchX,touchY);
+
+                    drawCanvas.drawLine(start.x,start.y,finish.x,finish.y,drawPaint);
+                    new EndpointsPostRaw().execute(new Pair<Context, String>(null, room.getFriend() + ";=;" + drawPaint.getColor() + ";=;"
+                            + "LINE:" + start.x + ":" + start.y + ":" + finish.x + ":" + finish.y + ";=;" + drawPaint.getStrokeWidth()));
+                    invalidate();
+                    shapeMode = 0;
+                    break;
+                default:
+                    return false;
+            }
+
+        }
 
         invalidate();
         return true;
@@ -191,6 +239,50 @@ public class Drawing extends View {
             PointF gFinish = new PointF(Float.parseFloat(pairs[3]),Float.parseFloat(pairs[4]));
 
             drawCanvas.drawRect(gStart.x,gStart.y,gFinish.x,gFinish.y,gPaint);
+
+            oldPoints = points;
+            invalidate();
+        } catch(Exception e) {
+            //DO NOTHING
+        }
+        return true;
+    }
+
+    public boolean drawCircle(String newColour, String points, String newSize) {
+        try {
+            if(oldPoints.equals(points))
+                return true;
+            gPaint.setColor(Integer.parseInt(newColour));
+            gPaint.setStrokeWidth(Float.parseFloat(newSize));
+            gPath = new Path();
+
+            String[] pairs = points.split(":");
+            PointF gStart = new PointF(Float.parseFloat(pairs[1]),Float.parseFloat(pairs[2]));
+            float gFinish = Float.parseFloat(pairs[3]);
+
+            drawCanvas.drawCircle(gStart.x,gStart.y,gFinish,gPaint);
+
+            oldPoints = points;
+            invalidate();
+        } catch(Exception e) {
+            //DO NOTHING
+        }
+        return true;
+    }
+
+    public boolean drawLine(String newColour, String points, String newSize) {
+        try {
+            if(oldPoints.equals(points))
+                return true;
+            gPaint.setColor(Integer.parseInt(newColour));
+            gPaint.setStrokeWidth(Float.parseFloat(newSize));
+            gPath = new Path();
+
+            String[] pairs = points.split(":");
+            PointF gStart = new PointF(Float.parseFloat(pairs[1]),Float.parseFloat(pairs[2]));
+            PointF gFinish = new PointF(Float.parseFloat(pairs[3]),Float.parseFloat(pairs[4]));
+
+            drawCanvas.drawLine(gStart.x,gStart.y,gFinish.x,gFinish.y,gPaint);
 
             oldPoints = points;
             invalidate();

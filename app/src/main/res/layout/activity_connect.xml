@@ -244,8 +244,8 @@
             style="@style/Text_Button"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:onClick="clearScreen"
-            android:text="drawCircle"
+            android:onClick="drawCircle"
+            android:text="Circle"
             android:id="@+id/buttonCircle"
             android:layout_row="1"
             android:layout_column="22" />

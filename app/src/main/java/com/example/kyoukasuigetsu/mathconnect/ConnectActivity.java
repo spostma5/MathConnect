@@ -298,6 +298,12 @@ public class ConnectActivity extends ActionBarActivity {
             else if(paths.startsWith("SQUARE")) {
                 drawingView.get(ind).drawSquare(parts[0], paths, parts[2]);
             }
+            else if(paths.startsWith("CIRCLE")) {
+                drawingView.get(ind).drawCircle(parts[0], paths, parts[2]);
+            }
+            else if(paths.startsWith("LINE")) {
+                drawingView.get(ind).drawLine(parts[0], paths, parts[2]);
+            }
             else {
                 paths = decompress(parts[1]);
                 drawingView.get(ind).onTouchEventVar(parts[0], paths, parts[2]);
@@ -387,10 +393,10 @@ public class ConnectActivity extends ActionBarActivity {
     }
 
     public void drawCircle(View view) {
-
+        drawingView.get(ind).shapeMode = 2;
     }
 
     public void drawLine(View view) {
-
+        drawingView.get(ind).shapeMode = 3;
     }
 }
