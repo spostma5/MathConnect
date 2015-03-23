@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PointF;
 import android.util.AttributeSet;
 import android.util.Pair;
 import android.view.MotionEvent;
@@ -25,6 +26,9 @@ public class Drawing extends View {
     private Room room;
     private String points, oldPoints;
     private AttributeSet attributes;
+
+    public int shapeMode = 0;
+    private PointF start,finish;
 
     int width,height;
 
@@ -93,30 +97,56 @@ public class Drawing extends View {
         }
     }
 
+    public Room getRoom() { return room; }
+
     @Override
     public  boolean onTouchEvent(MotionEvent event) {
         Float touchX = event.getX();
         Float touchY = event.getY();
 
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                drawPath.moveTo(touchX, touchY);
-                points += touchX.toString() + "&&&" + touchY.toString() + "===";
-                break;
-            case MotionEvent.ACTION_MOVE:
-                drawPath.lineTo(touchX, touchY);
-                points += touchX.toString() + "&&&" + touchY.toString() + "===";
-                break;
-            case MotionEvent.ACTION_UP:
-                new EndpointsPostTask().execute(new Pair<Context, String>(null, room.getFriend() + ";=;" + drawPaint.getColor() + ";=;"
-                        + points + ";=;" + drawPaint.getStrokeWidth()));
-                points = "";
+        if(shapeMode == 0) {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    drawPath.moveTo(touchX, touchY);
+                    points += touchX.toString() + "&&&" + touchY.toString() + "===";
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    drawPath.lineTo(touchX, touchY);
+                    points += touchX.toString() + "&&&" + touchY.toString() + "===";
+                    break;
+                case MotionEvent.ACTION_UP:
+                    new EndpointsPostTask().execute(new Pair<Context, String>(null, room.getFriend() + ";=;" + drawPaint.getColor() + ";=;"
+                            + points + ";=;" + drawPaint.getStrokeWidth()));
+                    points = "";
 
-                drawCanvas.drawPath(drawPath, drawPaint);
-                drawPath.reset();
-                break;
-            default:
-                return false;
+                    drawCanvas.drawPath(drawPath, drawPaint);
+                    drawPath.reset();
+                    break;
+                default:
+                    return false;
+            }
+        }
+        else if (shapeMode == 1) {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    start = new PointF(touchX,touchY);
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    //DO NOTHING
+                    break;
+                case MotionEvent.ACTION_UP:
+                    finish = new PointF(touchX,touchY);
+
+                    drawCanvas.drawRect(start.x,start.y,finish.x,finish.y,drawPaint);
+                    new EndpointsPostRaw().execute(new Pair<Context, String>(null, room.getFriend() + ";=;" + drawPaint.getColor() + ";=;"
+                            + "SQUARE:" + start.x + ":" + start.y + ":" + finish.x + ":" + finish.y + ";=;" + drawPaint.getStrokeWidth()));
+                    invalidate();
+                    shapeMode = 0;
+                    break;
+                default:
+                    return false;
+            }
+
         }
 
         invalidate();
@@ -141,6 +171,28 @@ public class Drawing extends View {
             gPath.reset();
 
             oldPoints = newPath;
+            invalidate();
+        } catch(Exception e) {
+            //DO NOTHING
+        }
+        return true;
+    }
+
+    public boolean drawSquare(String newColour, String points, String newSize) {
+        try {
+            if(oldPoints.equals(points))
+                return true;
+            gPaint.setColor(Integer.parseInt(newColour));
+            gPaint.setStrokeWidth(Float.parseFloat(newSize));
+            gPath = new Path();
+
+            String[] pairs = points.split(":");
+            PointF gStart = new PointF(Float.parseFloat(pairs[1]),Float.parseFloat(pairs[2]));
+            PointF gFinish = new PointF(Float.parseFloat(pairs[3]),Float.parseFloat(pairs[4]));
+
+            drawCanvas.drawRect(gStart.x,gStart.y,gFinish.x,gFinish.y,gPaint);
+
+            oldPoints = points;
             invalidate();
         } catch(Exception e) {
             //DO NOTHING
