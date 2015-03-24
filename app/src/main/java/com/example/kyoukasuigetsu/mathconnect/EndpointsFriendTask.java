@@ -49,7 +49,7 @@ class EndpointsFriendTask extends AsyncTask<Pair<Context, String>, Void, String>
         context = params[0].first;
         String user = params[0].second.split(";=;")[0];
         String friend = params[0].second.split(";=;")[1];
-        if(friend.split("=;=")[0].isEmpty()) {
+        if(friend.split("=;=")[0].isEmpty() || friend.startsWith("&&&")) {
             friend = friend.substring(3);
         }
 
